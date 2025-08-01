@@ -1,0 +1,174 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "cooking-class-website": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "i18n": {
+        "sourceLocale": "hr",
+        "locales": {
+          "de": "src/locale/messages.de.xlf",
+          "it": "src/locale/messages.it.xlf",
+          "fr": "src/locale/messages.fr.xlf",
+          "cs": "src/locale/messages.cs.xlf",
+          "en-US": "src/locale/messages.en-US.xlf",
+          "es": "src/locale/messages.es.xlf"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": ["src"]
+            },
+            "localize": true,
+            "outputPath": "dist/cooking_class_website",
+            "deployUrl": "/",
+            "baseHref": "/",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": ["src/polyfills.ts"],
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/styles/styles.scss",
+              "node_modules/flatpickr/dist/flatpickr.min.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "hr": {
+              "localize": ["hr"],
+              "baseHref": "/"
+            },
+            "en-US": {
+              "localize": ["en-US"],
+              "baseHref": "/en-US/"
+            },
+            "de": {
+              "localize": ["de"],
+              "baseHref": "/de/"
+            },
+            "cs": {
+              "localize": ["cs"],
+              "baseHref": "/cs/"
+            },
+            "es": {
+              "localize": ["es"],
+              "baseHref": "/es/"
+            },
+            "fr": {
+              "localize": ["fr"],
+              "baseHref": "/fr/"
+            },
+            "it": {
+              "localize": ["it"],
+              "baseHref": "/it/"
+            },
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "none",
+              "localize": true,
+              "outputPath": "dist/cooking_class_website",
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true,
+              "namedChunks": false
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "cooking-class-website:build:production"
+            },
+            "development": {
+              "buildTarget": "cooking-class-website:build:development"
+            },
+            "de": {
+              "buildTarget": "cooking-class-website:build:de"
+            },
+            "it": {
+              "buildTarget": "cooking-class-website:build:it"
+            },
+            "fr": {
+              "buildTarget": "cooking-class-website:build:fr"
+            },
+            "es": {
+              "buildTarget": "cooking-class-website:build:es"
+            },
+            "cs": {
+              "buildTarget": "cooking-class-website:build:cs"
+            },
+            "en-US": {
+              "buildTarget": "cooking-class-website:build:en-US"
+            }
+          },
+
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/styles.scss",
+              "node_modules/@phosphor-icons/web/phosphor.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "75050a6b-b307-4171-b574-8ea77b08a78d"
+  }
+}

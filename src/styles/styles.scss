@@ -1,0 +1,102 @@
+@use "abstracts/variables";
+@use "abstracts/colors";
+@use "abstracts/typography";
+@use "base/base";
+@use "components/buttons";
+
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.input-field {
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
+}
+
+.icon {
+  margin-right: 8px;
+  align-self: center;
+}
+
+.info-icon {
+  margin-left: 8px;
+  align-self: center;
+}
+
+.input-field {
+  height: 32px;
+  border-radius: 4px;
+}
+
+.input-field.ng-invalid.ng-touched {
+  border: 2px solid red !important;
+}
+
+.input-field.ng-invalid {
+  border: 2px solid black; // neutralna ivica kad je nevalidno, ali nije fokusirano
+}
+
+.input-field:focus {
+  outline: none; // Remove default browser outline
+  border: 2px solid black !important; // Consistent black border
+}
+
+.submit-button {
+  width: 100%;
+  height: 32px;
+  background-color: colors.$secondary-olive-green-700;
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
+  border-radius: 4px;
+}
+
+.invalid-button {
+  width: 100%;
+  height: 32px;
+  background-color: colors.$neutral-creamy-white-700;
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
+  border-radius: 4px;
+
+  cursor: not-allowed;
+}
+
+.bullet-container {
+  display: flex;
+  align-items: center;
+  word-break: break-word;
+}
+
+.icon-outer-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; // omogućava prelamanje samo kad mora
+  gap: 8px;
+  word-break: break-word;
+}
+
+.icon-outer-container {
+  gap: 4px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.input-label {
+  height: 32px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
