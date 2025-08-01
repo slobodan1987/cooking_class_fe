@@ -10,6 +10,34 @@
     height: 1300px;
     justify-content: space-between;
 
+    // Prevent payment autofill detection
+    input[name="guest-count"] {
+
+        // Disable all autofill styling
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: inherit !important;
+            transition: background-color 5000s ease-in-out 0s;
+            box-shadow: inset 0 0 20px 20px transparent;
+        }
+    }
+
+    // Hide payment autofill suggestions
+    input[autocomplete="off"] {
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus {
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: inherit !important;
+            transition: background-color 5000s ease-in-out 0s;
+            box-shadow: inset 0 0 20px 20px transparent;
+        }
+    }
+
     @media (max-width: 768px) {
         padding: 16px;
         height: 1300px;

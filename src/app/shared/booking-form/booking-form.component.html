@@ -1,4 +1,4 @@
-<form [formGroup]="form" class="booking-form">
+<form [formGroup]="form" class="booking-form" autocomplete="off">
   <ng-container formGroupName="bookingForm">
     <!-- <div class="temporary-booking-form-message">
       <div class="bullet-container">
@@ -34,8 +34,9 @@
         class="input-field"
         required
         id="name"
-        name="name"
+        name="fullname"
         type="text"
+        autocomplete="name"
       />
     </div>
 
@@ -53,6 +54,7 @@
         id="email"
         name="email"
         type="email"
+        autocomplete="email"
       />
     </div>
 
@@ -70,6 +72,7 @@
         id="phone"
         name="phone"
         type="tel"
+        autocomplete="tel"
       />
     </div>
 
@@ -85,8 +88,9 @@
         #dateInput
         formControlName="date"
         id="date"
-        name="date"
+        name="reservation-date"
         type="text"
+        autocomplete="off"
       />
     </div>
 
@@ -103,11 +107,13 @@
         formControlName="guests"
         required
         id="guests"
-        name="guests"
+        name="guest-count"
         type="number"
         [value]="minPersonsPerClass"
         [min]="minPersonsPerClass"
         [max]="maxPersonsPerClass"
+        autocomplete="off"
+        data-form-type="other"
       />
     </div>
 
@@ -123,8 +129,8 @@
         "
         formControlName="message"
         id="message"
-        name="message"
-        type="text"
+        name="additional-info"
+        autocomplete="off"
       ></textarea>
     </div>
 
