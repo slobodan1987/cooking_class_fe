@@ -329,4 +329,13 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Puede proporcionar información adicional aquí (por ejemplo, idioma, solicitudes especiales...)',
     cs: 'Zde můžete uvést další informace (např. jazyk, zvláštní požadavky...)',
   },
+  reservationCreationDeadlineLabel: {
+    hr: 'Rezervaciju je moguće napraviti do 24 sata prije početka događaja.',
+    'en-US': 'Reservations can be made up to 24 hours before the event starts.',
+    de: 'Reservierungen sind bis zu 24 Stunden vor Beginn der Veranstaltung möglich.',
+    it: "Le prenotazioni possono essere effettuate fino a 24 ore prima dell'inizio dell'evento.",
+    fr: "Les réservations peuvent être effectuées jusqu'à 24 heures avant le début de l'événement.",
+    es: 'Las reservas se pueden hacer hasta 24 horas antes del inicio del evento.',
+    cs: 'Rezervace je možné provést až 24 hodin před začátkem akce.',
+  },
 };
