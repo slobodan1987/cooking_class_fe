@@ -319,4 +319,14 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Esperamos poder compartir pronto las primeras impresiones con usted. ¡Gracias por su comprensión!',
     cs: 'Těšíme se, že s vámi brzy sdílíme první dojmy. Děkujeme za pochopení!',
   },
+  messagePlaceholder: {
+    hr: 'Ovdje možete navesti dodatne informacije (npr. jezik, posebne zahtjeve...)',
+    'en-US':
+      'You can provide additional information here (e.g., language, special requests...)',
+    de: 'Hier können Sie zusätzliche Informationen angeben (z.B. Sprache, besondere Wünsche...)',
+    it: 'Puoi fornire ulteriori informazioni qui (ad esempio, lingua, richieste speciali...)',
+    fr: 'Vous pouvez fournir des informations supplémentaires ici (par exemple, langue, demandes spéciales...)',
+    es: 'Puede proporcionar información adicional aquí (por ejemplo, idioma, solicitudes especiales...)',
+    cs: 'Zde můžete uvést další informace (např. jazyk, zvláštní požadavky...)',
+  },
 };

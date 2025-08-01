@@ -117,7 +117,10 @@
       >
       <textarea
         class="message-textarea"
-        placeholder="Ovdje možete navesti dodatne informacije (npr. jezik, posebne zahtjeve...)"
+        [placeholder]="
+          'messagePlaceholder'
+            | translate : (currentLanguageService.currentLanguage$ | async)
+        "
         formControlName="message"
         id="message"
         name="message"
