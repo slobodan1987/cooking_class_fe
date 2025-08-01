@@ -15,12 +15,19 @@
 
     <h4 class="bullet-container">
       <i class="ph ph-calendar-check icon"></i>
-      Zatraži rezervaciju
+      {{
+        "askForReservation"
+          | translate : (currentLanguageService.currentLanguage$ | async)
+      }}
     </h4>
 
     <div class="form-field">
       <label class="input-label icon-outer-container" for="name"
-        ><i class="ph ph-user-circle icon"></i>Ime i prezime *</label
+        ><i class="ph ph-user-circle icon"></i>
+        {{
+          "nameAndSurname"
+            | translate : (currentLanguageService.currentLanguage$ | async)
+        }}</label
       >
       <input
         formControlName="name"
@@ -34,7 +41,11 @@
 
     <div class="form-field">
       <label class="input-label icon-outer-container" for="email"
-        ><i class="ph ph-envelope icon"></i> E-mail adresa *</label
+        ><i class="ph ph-envelope icon"></i>
+        {{
+          "emailAddress"
+            | translate : (currentLanguageService.currentLanguage$ | async)
+        }}</label
       >
       <input
         formControlName="email"
@@ -47,7 +58,11 @@
 
     <div class="form-field">
       <label class="input-label icon-outer-container" for="phone"
-        ><i class="ph ph-phone icon"></i>Broj mobitela *</label
+        ><i class="ph ph-phone icon"></i
+        >{{
+          "mobileNumber"
+            | translate : (currentLanguageService.currentLanguage$ | async)
+        }}</label
       >
       <input
         formControlName="phone"
@@ -60,7 +75,10 @@
 
     <div class="form-field">
       <label class="input-label icon-outer-container" for="date"
-        ><i class="ph ph-calendar-blank icon"></i>Datum *</label
+        ><i class="ph ph-calendar-blank icon"></i
+        >{{
+          "date" | translate : (currentLanguageService.currentLanguage$ | async)
+        }}</label
       >
       <input
         class="input-field booking-form-date-input-field"
@@ -74,7 +92,11 @@
 
     <div class="form-field">
       <label class="input-label icon-outer-container" for="guests"
-        ><i class="ph ph-users-three icon"></i>Broj osoba *</label
+        ><i class="ph ph-users-three icon"></i
+        >{{
+          "numberOfPersons"
+            | translate : (currentLanguageService.currentLanguage$ | async)
+        }}</label
       >
       <input
         class="input-field"
@@ -105,28 +127,38 @@
 
     <div class="bookig-info">
       <p class="bullet-container">
-        <i class="ph ph-warning-circle icon"></i>Ova rezervacija NIJE automatski
-        potvrđena.
+        <i class="ph ph-warning-circle icon"></i
+        >{{
+          "thisReservationIsNotAutomaticallyConfirmed"
+            | translate : (currentLanguageService.currentLanguage$ | async)
+        }}
       </p>
 
       <p class="bullet-container">
-        <i class="ph ph-info icon"></i>Termini se brzo popunjavaju i dostupnost
-        može varirati.
+        <i class="ph ph-info icon"></i
+        >{{
+          "fastBookingLabel"
+            | translate : (currentLanguageService.currentLanguage$ | async)
+        }}
       </p>
 
       <p class="bullet-container">
         <i class="ph ph-users-three icon"></i
         ><span
-          >Događaju može prisustvovati od 2 do 12 osoba. Moguće je kombinirati
-          više grupa.
+          >{{
+            "numberOfPersonsPerClassLabel"
+              | translate : (currentLanguageService.currentLanguage$ | async)
+          }}
         </span>
       </p>
 
       <p class="bullet-container">
         <i class="ph ph-currency-eur icon"></i
         ><span
-          >Plaćanje se vrši nakon događaja – gotovinom, karticom ili virmanom.
-          Cijena po osobi iznosi
+          >{{
+            "paymentMethodsLabel"
+              | translate : (currentLanguageService.currentLanguage$ | async)
+          }}
           <strong>{{ pricePerPerson }} EUR</strong>.</span
         >
       </p>
@@ -142,7 +174,11 @@
         color="accent"
         type="submit"
       >
-        <i class="ph ph-paper-plane-right icon"></i> Zatraži rezervaciju
+        <i class="ph ph-paper-plane-right icon"></i
+        >{{
+          "askForReservationButtonLabel"
+            | translate : (currentLanguageService.currentLanguage$ | async)
+        }}
       </button>
     </div>
   </ng-container>

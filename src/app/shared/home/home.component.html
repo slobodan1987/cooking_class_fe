@@ -27,29 +27,32 @@
         </div>
         <!-- title -->
         <div class="div-title">
-          <h1 i18n="@@title">Traditional Plitvice Lakes Cooking Class</h1>
+          <h1>Traditional Plitvice Lakes Cooking Class</h1>
         </div>
 
         <!-- description -->
         <div class="description">
           <div>
-            <p i18n="@@description1">
-              Dobrodošli u srce Like, gdje mirisi domaće kuhinje bude sjećanja,
-              a okusi pričaju priče naših baka. Naš Traditional Plitvice Lakes
-              Cooking Class nije samo tečaj kuhanja – to je doživljaj za dušu.
+            <p>
+              {{
+                "description1"
+                  | translate
+                    : (currentLanguageService.currentLanguage$ | async)
+              }}
             </p>
-            <p i18n="@@description2">
-              U društvu naše obitelji, u toplini ličkog doma, naučit ćete
-              pripremati autentična plitvička i lička jela po starinskim
-              receptima koji se prenose generacijama. Ali ne brinite – ovdje se
-              ne broje samo grami i minute. Ovdje se broje osmijesi, mirisi
-              svježeg bilja, zvuk pucanja vatre i topli razgovori uz rakijicu.
+            <p>
+              {{
+                "description2"
+                  | translate
+                    : (currentLanguageService.currentLanguage$ | async)
+              }}
             </p>
-            <p i18n="@@description3">
-              Zajedno ćemo mijesiti, sjeckati, kuhati i – najvažnije – smijati
-              se. U svako jelo unosimo dašak prošlih vremena i ljubavi prema
-              kraju iz kojeg dolazimo. A dok kuhate s nama, postajete dio te
-              priče.
+            <p>
+              {{
+                "description3"
+                  | translate
+                    : (currentLanguageService.currentLanguage$ | async)
+              }}
             </p>
           </div>
         </div>
@@ -63,60 +66,80 @@
         <!-- bullets (description) -->
         <div>
           <div class="div-title">
-            <h2 i18n="@@expected">Što vas očekuje?</h2>
+            <h2>
+              {{
+                "expected"
+                  | translate
+                    : (currentLanguageService.currentLanguage$ | async)
+              }}
+            </h2>
           </div>
 
           <div>
             <p class="bullet-container">
               <i class="ph ph-cooking-pot icon"></i
-              ><span i18n="@@bullet1"
-                >Edukacija i priprema tradicionalnih jela uz stručne i srdačne
-                domaćine
+              ><span>
+                {{
+                  "bullet1"
+                    | translate
+                      : (currentLanguageService.currentLanguage$ | async)
+                }}
               </span>
             </p>
             <p class="bullet-container">
               <i class="ph ph-leaf icon"></i
-              ><span i18n="@@bullet2"
-                >Korištenje lokalnih, svježih sastojaka – iz vrta, s tržnice ili
-                iz prirode
+              ><span
+                >{{
+                  "bullet2"
+                    | translate
+                      : (currentLanguageService.currentLanguage$ | async)
+                }}
               </span>
             </p>
             <p class="bullet-container">
               <i class="ph ph-house icon"></i
-              ><span i18n="@@bullet3"
-                >Nezaboravno druženje u rustikalnom ambijentu</span
-              >
+              ><span>{{
+                "bullet3"
+                  | translate
+                    : (currentLanguageService.currentLanguage$ | async)
+              }}</span>
             </p>
             <p class="bullet-container">
               <i class="ph ph-wine icon"></i
-              ><span i18n="@@bullet4"
-                >Kušanje vlastitih kulinarskih remek-djela uz domaće vino i
-                rakiju</span
-              >
+              ><span>{{
+                "bullet4"
+                  | translate
+                    : (currentLanguageService.currentLanguage$ | async)
+              }}</span>
             </p>
             <p class="bullet-container">
               <i class="ph ph-heart icon"></i
-              ><span i18n="@@bullet5"
-                >Trenuci koje ćete ponijeti kući – ne u torbi, nego u srcu</span
-              >
+              ><span>{{
+                "bullet5"
+                  | translate
+                    : (currentLanguageService.currentLanguage$ | async)
+              }}</span>
             </p>
           </div>
         </div>
 
         <!-- description ending -->
         <div>
-          <div i18n="@@endingWord">
-            Ovo nije samo kuhanje – ovo je spajanje s kulturom, s ljudima i s
-            prirodom Plitvičkih jezera. Ako tražite nešto istinski autentično,
-            daleko od turističke vreve, dođite da zajedno zapalimo vatru,
-            razvaljamo tijesto i zapečemo uspomene koje će trajati zauvijek.
+          <div>
+            {{
+              "endingWord"
+                | translate : (currentLanguageService.currentLanguage$ | async)
+            }}
           </div>
         </div>
 
         <!-- final word -->
         <div class="div-title">
-          <h2 i18n="@@reserveWord">
-            Rezervirajte svoje mjesto za stolom – obitelj vas čeka!
+          <h2>
+            {{
+              "reserveWord"
+                | translate : (currentLanguageService.currentLanguage$ | async)
+            }}
           </h2>
         </div>
       </div>

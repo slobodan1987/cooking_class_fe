@@ -1,13 +1,17 @@
 <div class="review-list-container temporary-reviews-message">
   <div>
     <div class="bullet-container">
-      <i class="ph ph-clock icon"></i><strong>Recenzije uskoro stižu!</strong>
+      <i class="ph ph-clock icon"></i
+      ><strong>{{
+        "reviewsSoon"
+          | translate : (currentLanguageService.currentLanguage$ | async)
+      }}</strong>
     </div>
     <div class="bullet-container">
-      <span
-        >Radujemo se što ćemo s vama uskoro podijeliti prve utiske. Hvala na
-        razumijevanju!</span
-      >
+      <span>{{
+        "reviewsPatienceLabel"
+          | translate : (currentLanguageService.currentLanguage$ | async)
+      }}</span>
     </div>
   </div>
   <!-- <ul class="review-list">

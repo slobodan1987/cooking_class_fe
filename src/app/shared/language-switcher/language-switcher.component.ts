@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FlagPipe } from '../pipes/flag.pipe';
 import { Language, LANGUAGES } from './languages';
+import { CurrentLanguageService } from '../services/current-language.service';
 
 interface LanguageForm {
   language: FormControl<
@@ -23,7 +24,7 @@ interface LanguageForm {
   styleUrl: './language-switcher.component.scss',
 })
 export class LanguageSwitcherComponent implements OnInit {
-  constructor() {}
+  constructor(private currentLanguageService: CurrentLanguageService) {}
   languages: Language[] = LANGUAGES;
   form: FormGroup<LanguageForm> = new FormGroup<LanguageForm>({
     language: new FormControl<
@@ -35,37 +36,15 @@ export class LanguageSwitcherComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    // Get the language code from the URL path or localStorage
-    const directPath = window.location.pathname;
-    let codeFromPath = 'hr';
-    if (directPath?.includes('/hr')) {
-      codeFromPath = 'hr';
-    }
-    if (directPath?.includes('/en-US')) {
-      codeFromPath = 'en-US';
-    }
-    if (directPath?.includes('/de')) {
-      codeFromPath = 'de';
-    }
-    if (directPath?.includes('/it')) {
-      codeFromPath = 'it';
-    }
-    if (directPath?.includes('/fr')) {
-      codeFromPath = 'fr';
-    }
-    if (directPath?.includes('/es')) {
-      codeFromPath = 'es';
-    }
-    if (directPath?.includes('/cs')) {
-      codeFromPath = 'cs';
-    }
-
+    /**
+     * Retrieve the language code from the URL path or localStorage.
+     * If the language code is not found, default to 'hr'.
+     * The language code is used to set the initial value of the form control.
+     */
     const saved = window.localStorage.getItem('selectedLanguage') ?? 'hr';
 
-    const finalCode = codeFromPath ?? saved ?? 'hr';
-
     this.form.setValue({
-      language: finalCode as
+      language: saved as
         | 'hr'
         | 'en-US'
         | 'de'
@@ -76,7 +55,7 @@ export class LanguageSwitcherComponent implements OnInit {
         | null,
     });
 
-    this.setLanguage(finalCode);
+    this.setLanguage(saved);
   }
 
   switchLanguage(event: Event): void {
@@ -98,33 +77,7 @@ export class LanguageSwitcherComponent implements OnInit {
     this.setLanguage(codeNormalized);
   }
   setLanguage(code: any): void {
-    let newPath: string = '/hr';
-    if (code === 'hr') {
-      newPath = '/hr';
-    }
-    if (code === 'de') {
-      newPath = '/de';
-    }
-    if (code === 'es') {
-      newPath = '/es';
-    }
-    if (code === 'fr') {
-      newPath = '/fr';
-    }
-    if (code === 'it') {
-      newPath = '/it';
-    }
-    if (code === 'cs') {
-      newPath = '/cs';
-    }
-    if (code === 'en-US') {
-      newPath = '/en-US';
-    }
-
-    // Only if we are not already on that page
-    if (window.location.pathname !== newPath) {
-      window.localStorage.setItem('selectedLanguage', code);
-      window.location.href = newPath;
-    }
+    window.localStorage.setItem('selectedLanguage', code);
+    this.currentLanguageService.setLanguage(code);
   }
 }

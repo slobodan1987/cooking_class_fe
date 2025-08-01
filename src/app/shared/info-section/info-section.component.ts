@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { IBEState } from '../models/model';
+import { CurrentLanguageService } from '../services/current-language.service';
+import { TranslatePipe } from '../pipes/translate.pipe';
+import { CommonModule } from '@angular/common';
 
 /**
  * InfoSectionComponent displays information about the booking engine state.
@@ -9,12 +12,14 @@ import { IBEState } from '../models/model';
 @Component({
   selector: 'app-info-section[beState]',
   standalone: true,
-  imports: [],
+  imports: [TranslatePipe, CommonModule],
   templateUrl: './info-section.component.html',
   styleUrl: './info-section.component.scss',
 })
 export class InfoSectionComponent {
   private _beState: IBEState | null = null;
+
+  constructor(public currentLanguageService: CurrentLanguageService) {}
 
   @Input()
   set beState(value: IBEState | null) {

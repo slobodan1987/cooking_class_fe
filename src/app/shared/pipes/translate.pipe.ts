@@ -18,10 +18,13 @@ export class TranslatePipe implements PipeTransform {
   // in the TRANSLATIONS object based on the provided language code
   // If the translation exists, it returns the translated string; otherwise, it returns null
   transform(
-    identificator: keyof typeof TRANSLATIONS,
-    languageCode: 'hr' | 'en-US' | 'de' | 'it' | 'fr' | 'es' | 'cs'
+    identificator: string,
+    languageCode: 'hr' | 'en-US' | 'de' | 'it' | 'fr' | 'es' | 'cs' | null
   ): string | null {
     const translation = TRANSLATIONS[identificator];
-    return translation ? translation[languageCode] || null : null;
+    if (translation && languageCode) {
+      return translation[languageCode] || null;
+    }
+    return null;
   }
 }

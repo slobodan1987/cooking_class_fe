@@ -3,32 +3,40 @@
     <p class="icon-outer-container info-row">
       <i class="ph ph-clock icon"></i
       ><strong
-        ><span class="info-label" i18n="@@timeLabel"
-          >Vrijeme održavanja:</span
-        ></strong
+        ><span class="info-label">{{
+          "timeLabel"
+            | translate : (currentLanguageService.currentLanguage$ | async)
+        }}</span></strong
       >{{ startTime }} - {{ endTime }}
     </p>
   </div>
   <div>
     <p class="icon-outer-container info-row">
       <i class="ph ph-map-pin icon"></i
-      ><strong class="info-label" i18n="@@addressLabel">Adresa:</strong>
+      ><strong class="info-label">{{
+        "addressLabel"
+          | translate : (currentLanguageService.currentLanguage$ | async)
+      }}</strong>
       {{ address }}
     </p>
   </div>
   <div>
     <p class="icon-outer-container info-row">
       <i class="ph ph-phone icon"></i
-      ><strong href="tel:+385919146693" class="info-label" i18n="@@phoneLabel"
-        >Telefon:</strong
-      >
+      ><strong href="tel:+385919146693" class="info-label">{{
+        "phoneLabel"
+          | translate : (currentLanguageService.currentLanguage$ | async)
+      }}</strong>
       {{ companyPhone }}
     </p>
   </div>
   <div>
     <p class="icon-outer-container info-row">
       <i class="ph ph-envelope icon"></i>
-      <strong class="info-label" i18n="@@emailLabel">E-mail:</strong>
+      <strong class="info-label">{{
+        "emailLabel"
+          | translate : (currentLanguageService.currentLanguage$ | async)
+      }}</strong>
       <span href="mailto:cooking.class.plitvice@gmail.com">{{
         companyMail
       }}</span>

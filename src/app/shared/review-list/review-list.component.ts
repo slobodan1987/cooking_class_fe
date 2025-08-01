@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { CurrentLanguageService } from '../services/current-language.service';
+import { TranslatePipe } from '../pipes/translate.pipe';
 
 /** This component displays a paginated list of reviews
  * It allows users to navigate through the reviews with pagination controls
@@ -9,13 +11,15 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-review-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './review-list.component.html',
   styleUrls: ['./review-list.component.scss'],
 })
 export class ReviewListComponent {
   reviewsPerPage = 10;
   currentPage = 1;
+
+  constructor(public currentLanguageService: CurrentLanguageService) {}
 
   reviews = Array.from({ length: 45 }, (_, i) => ({
     author: `Korisnik${i + 1}`,

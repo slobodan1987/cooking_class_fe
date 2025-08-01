@@ -19,6 +19,8 @@ import { IBEState } from '../models/model';
 // Or, if the file does not exist, create 'model.ts' in the correct directory with the IBEState definition.
 import { CommonModule } from '@angular/common';
 import flatpickr from 'flatpickr';
+import { CurrentLanguageService } from '../services/current-language.service';
+import { TranslatePipe } from '../pipes/translate.pipe';
 
 interface BookingForm {
   name: FormControl<string | null>;
@@ -41,7 +43,7 @@ interface Form {
 @Component({
   selector: 'app-booking-form[beState]',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, TranslatePipe],
   templateUrl: './booking-form.component.html',
   styleUrl: './booking-form.component.scss',
 })
@@ -75,6 +77,10 @@ export class BookingFormComponent implements AfterViewInit {
   maxPersonsPerClass: number | null = null;
 
   form: FormGroup<Form> = this.createForm();
+
+  constructor(
+    public currentLanguageService: CurrentLanguageService // Assuming this service is used to get the current language
+  ) {}
 
   phoneValidator(): ValidatorFn {
     return (control: AbstractControl<any, any>): ValidationErrors | null => {
