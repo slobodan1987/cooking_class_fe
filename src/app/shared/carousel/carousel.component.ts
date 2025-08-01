@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostListener,
+  ViewChild,
+} from '@angular/core';
 
 /**
  * CarouselComponent displays a horizontal scrollable carousel of images.
@@ -39,6 +45,8 @@ export class CarouselComponent implements AfterViewInit {
   ];
 
   currentIndex = 0;
+  isModalOpen = false;
+  selectedImage = '';
 
   ngAfterViewInit() {
     this.carousel.nativeElement.addEventListener(
@@ -59,5 +67,33 @@ export class CarouselComponent implements AfterViewInit {
 
   scrollRight() {
     this.carousel.nativeElement.scrollBy({ left: 300, behavior: 'smooth' });
+  }
+
+  openImageModal(imageSrc: string) {
+    this.selectedImage = imageSrc;
+    this.isModalOpen = true;
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeImageModal() {
+    this.isModalOpen = false;
+    this.selectedImage = '';
+    // Restore body scroll
+    document.body.style.overflow = 'auto';
+  }
+
+  onModalBackdropClick(event: Event) {
+    // Close modal if clicked outside the image
+    if (event.target === event.currentTarget) {
+      this.closeImageModal();
+    }
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.isModalOpen) {
+      this.closeImageModal();
+    }
   }
 }

@@ -3,9 +3,31 @@
     <button class="scroll-button left" (click)="scrollLeft()">❮</button>
 
     <div class="carousel-strip" #carousel>
-      <img *ngFor="let img of images" [src]="img" alt="carousel image" />
+      <img
+        *ngFor="let img of images"
+        [src]="img"
+        alt="carousel image"
+        (click)="openImageModal(img)"
+        class="carousel-image"
+      />
     </div>
 
     <button class="scroll-button right" (click)="scrollRight()">❯</button>
+  </div>
+
+  <!-- Image Modal -->
+  <div
+    *ngIf="isModalOpen"
+    class="image-modal-overlay"
+    (click)="onModalBackdropClick($event)"
+  >
+    <div class="image-modal-content">
+      <button class="modal-close-button" (click)="closeImageModal()">×</button>
+      <img
+        [src]="selectedImage"
+        alt="Full resolution image"
+        class="modal-image"
+      />
+    </div>
   </div>
 </div>
