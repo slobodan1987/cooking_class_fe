@@ -1,6 +1,11 @@
 import { IBEState } from './model';
 import { v4 as uuidv4 } from 'uuid';
 
+/**
+ * Mock data for the booking engine state.
+ * This is used for testing and development purposes.
+ * It simulates the initial state of the booking engine with predefined dates and company data.
+ */
 export const mockEmptyBeState: IBEState = {
   dates: [
     {
@@ -36,6 +41,10 @@ export const mockEmptyBeState: IBEState = {
   },
 };
 
+/** * Mock data for the booking engine state with dates.
+ * This is used for testing and development purposes.
+ * It simulates the initial state of the booking engine with predefined dates and company data.
+ */
 export const mockBeStateWithDates: IBEState = {
   dates: [],
   companyData: {
@@ -52,11 +61,17 @@ export const mockBeStateWithDates: IBEState = {
   },
 };
 
+/**
+ * This interface defines the structure of a result object.
+ */
 export interface IResult {
   success: boolean;
   message?: string;
 }
 
+/**
+ * This interface defines the structure of a booking engine state result.
+ */
 export interface IBEStateResult {
   beState: IBEState;
   success: boolean;

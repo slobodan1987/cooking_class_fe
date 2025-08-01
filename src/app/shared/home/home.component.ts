@@ -7,6 +7,11 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
 import { mockEmptyBeState } from '../models/mock';
 import { IBEState } from '../models/model';
 import { ReviewListComponent } from '../review-list/review-list.component';
+
+/** * HomeComponent serves as the main entry point for the home page of the application.
+ * It initializes the booking engine state and includes various components such as the carousel, language switcher, review list, and booking form.
+ * The component is designed to be standalone and can be used independently in different parts of the application.
+ */
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',

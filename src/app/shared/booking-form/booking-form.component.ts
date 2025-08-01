@@ -33,6 +33,11 @@ interface Form {
   bookingForm: FormGroup<BookingForm>;
 }
 
+/** * BookingFormComponent is a form component that allows users to book a cooking class.
+ * It includes fields for name, email, phone, date, number of guests, and an optional message.
+ * The component validates the input fields and uses flatpickr for date selection.
+ * It is designed to be standalone and can be used independently in different parts of the application.
+ */
 @Component({
   selector: 'app-booking-form[beState]',
   standalone: true,

@@ -1,6 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { IBEState } from '../models/model';
 
+/**
+ * InfoSectionComponent displays information about the booking engine state.
+ * It shows details such as price per person, start and end times, address, phone, and email.
+ * The component is designed to be used in a standalone manner and can be integrated into various parts of the application.
+ */
 @Component({
   selector: 'app-info-section[beState]',
   standalone: true,

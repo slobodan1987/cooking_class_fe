@@ -41,7 +41,7 @@ body {
 }
 
 .input-field.ng-invalid {
-  border: 2px solid black; // neutralna ivica kad je nevalidno, ali nije fokusirano
+  border: 2px solid black; // neutral edge when invalid but not focused
 }
 
 .input-field:focus {
@@ -76,7 +76,7 @@ body {
 .icon-outer-container {
   display: flex;
   align-items: center;
-  flex-wrap: wrap; // omogućava prelamanje samo kad mora
+  flex-wrap: wrap; // enables wrapping only when necessary
   gap: 8px;
   word-break: break-word;
 }

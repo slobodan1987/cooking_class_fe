@@ -10,6 +10,12 @@ interface LanguageForm {
   >;
 }
 
+/**
+ * LanguageSwitcherComponent allows users to switch between different languages.
+ * It provides a dropdown to select the language and updates the application state accordingly.
+ * The selected language is saved in localStorage and can be retrieved on page load.
+ * The component also updates the URL path based on the selected language.
+ */
 @Component({
   selector: 'app-language-switcher',
   imports: [CommonModule, ReactiveFormsModule, FlagPipe],
@@ -29,128 +35,32 @@ export class LanguageSwitcherComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    // const currentPath = this.location.path();
-
+    // Get the language code from the URL path or localStorage
     const directPath = window.location.pathname;
     let codeFromPath = 'hr';
-    if (directPath?.includes('index-hr.html')) {
+    if (directPath?.includes('/hr')) {
       codeFromPath = 'hr';
     }
-    if (directPath?.includes('index-en-US.html')) {
+    if (directPath?.includes('/en-US')) {
       codeFromPath = 'en-US';
     }
-    if (directPath?.includes('index-de.html')) {
+    if (directPath?.includes('/de')) {
       codeFromPath = 'de';
     }
-    if (directPath?.includes('index-it.html')) {
+    if (directPath?.includes('/it')) {
       codeFromPath = 'it';
     }
-    if (directPath?.includes('index-fr.html')) {
+    if (directPath?.includes('/fr')) {
       codeFromPath = 'fr';
     }
-    if (directPath?.includes('index-es.html')) {
+    if (directPath?.includes('/es')) {
       codeFromPath = 'es';
     }
-    if (directPath?.includes('index-cs.html')) {
+    if (directPath?.includes('/cs')) {
       codeFromPath = 'cs';
     }
 
     const saved = window.localStorage.getItem('selectedLanguage') ?? 'hr';
-
-    // if (
-    //   !codeDirectlyFromPathTrimmed ||
-    //   codeDirectlyFromPathTrimmed === '' ||
-    //   codeDirectlyFromPathTrimmed === 'index.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-hr.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-Hr.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-HR.html' ||
-    //   codeDirectlyFromPathTrimmed === 'HR' ||
-    //   codeDirectlyFromPathTrimmed === 'Hr' ||
-    //   codeDirectlyFromPathTrimmed === 'hr'
-    // ) {
-    //   // 2. Ako nema localStorage, koristi defaultni jezik
-    //   codeDirectlyFromPathTrimmed = 'hr';
-    // }
-
-    // if (
-    //   codeDirectlyFromPathTrimmed === 'index-de.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-De.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-DE.html' ||
-    //   codeDirectlyFromPathTrimmed === 'DE' ||
-    //   codeDirectlyFromPathTrimmed === 'De' ||
-    //   codeDirectlyFromPathTrimmed === 'de'
-    // ) {
-    //   // 2. Ako nema localStorage, koristi defaultni jezik
-    //   codeDirectlyFromPathTrimmed = 'de';
-    // }
-
-    // if (
-    //   codeDirectlyFromPathTrimmed === 'index-en.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-En.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-EN.html' ||
-    //   codeDirectlyFromPathTrimmed === 'EN' ||
-    //   codeDirectlyFromPathTrimmed === 'En' ||
-    //   codeDirectlyFromPathTrimmed === 'en' ||
-    //   codeDirectlyFromPathTrimmed === 'index-en-us.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-En-Us.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-EN-US.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-en-US.html' ||
-    //   codeDirectlyFromPathTrimmed === 'EN-US' ||
-    //   codeDirectlyFromPathTrimmed === 'En-Us' ||
-    //   codeDirectlyFromPathTrimmed === 'en-US' ||
-    //   codeDirectlyFromPathTrimmed === 'en-us'
-    // ) {
-    //   // 2. Ako nema localStorage, koristi defaultni jezik
-    //   codeDirectlyFromPathTrimmed = 'en-US';
-    // }
-
-    // if (
-    //   codeDirectlyFromPathTrimmed === 'index-cs.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-Cs.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-CS.html' ||
-    //   codeDirectlyFromPathTrimmed === 'CS' ||
-    //   codeDirectlyFromPathTrimmed === 'Cs' ||
-    //   codeDirectlyFromPathTrimmed === 'cs'
-    // ) {
-    //   // 2. Ako nema localStorage, koristi defaultni jezik
-    //   codeDirectlyFromPathTrimmed = 'cs';
-    // }
-
-    // if (
-    //   codeDirectlyFromPathTrimmed === 'index-it.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-It.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-IT.html' ||
-    //   codeDirectlyFromPathTrimmed === 'IT' ||
-    //   codeDirectlyFromPathTrimmed === 'It' ||
-    //   codeDirectlyFromPathTrimmed === 'it'
-    // ) {
-    //   // 2. Ako nema localStorage, koristi defaultni jezik
-    //   codeDirectlyFromPathTrimmed = 'it';
-    // }
-
-    // if (
-    //   codeDirectlyFromPathTrimmed === 'index-es.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-Es.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-ES.html' ||
-    //   codeDirectlyFromPathTrimmed === 'ES' ||
-    //   codeDirectlyFromPathTrimmed === 'Es' ||
-    //   codeDirectlyFromPathTrimmed === 'es'
-    // ) {
-    //   // 2. Ako nema localStorage, koristi defaultni jezik
-    //   codeDirectlyFromPathTrimmed = 'es';
-    // }
-
-    // if (
-    //   codeDirectlyFromPathTrimmed === 'index-fr.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-Fr.html' ||
-    //   codeDirectlyFromPathTrimmed === 'index-FR.html' ||
-    //   codeDirectlyFromPathTrimmed === 'FR' ||
-    //   codeDirectlyFromPathTrimmed === 'Fr' ||
-    //   codeDirectlyFromPathTrimmed === 'fr'
-    // ) {
-    //   // 2. Ako nema localStorage, koristi defaultni jezik
-    //   codeDirectlyFromPathTrimmed = 'fr';
-    // }
 
     const finalCode = codeFromPath ?? saved ?? 'hr';
 
@@ -188,30 +98,30 @@ export class LanguageSwitcherComponent implements OnInit {
     this.setLanguage(codeNormalized);
   }
   setLanguage(code: any): void {
-    let newPath: string = '/index-hr.html';
+    let newPath: string = '/hr';
     if (code === 'hr') {
-      newPath = '/index-hr.html';
+      newPath = '/hr';
     }
     if (code === 'de') {
-      newPath = '/index-de.html';
+      newPath = '/de';
     }
     if (code === 'es') {
-      newPath = '/index-es.html';
+      newPath = '/es';
     }
     if (code === 'fr') {
-      newPath = '/index-fr.html';
+      newPath = '/fr';
     }
     if (code === 'it') {
-      newPath = '/index-it.html';
+      newPath = '/it';
     }
     if (code === 'cs') {
-      newPath = '/index-cs.html';
+      newPath = '/cs';
     }
     if (code === 'en-US') {
-      newPath = '/index-en-US.html';
+      newPath = '/en-US';
     }
 
-    // // Samo ako nismo već na toj stranici
+    // Only if we are not already on that page
     if (window.location.pathname !== newPath) {
       window.localStorage.setItem('selectedLanguage', code);
       window.location.href = newPath;

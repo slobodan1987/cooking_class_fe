@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
+/**
+ * CarouselComponent displays a horizontal scrollable carousel of images.
+ * It allows users to navigate through the images using scroll buttons or mouse wheel.
+ * The component is designed to be standalone and can be used independently in different parts of the application.
+ */
 @Component({
   selector: 'app-carousel',
   imports: [CommonModule],

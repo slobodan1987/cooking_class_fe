@@ -23,13 +23,13 @@ h1 {
     line-height: $line-height-1;
     letter-spacing: $letter-spacing-0;
     word-break: break-word;
-    /* dozvoljava prelamanje rečenica */
+    /* enables wrapping of sentences */
     overflow-wrap: break-word;
-    /* kompatibilno */
+    /* compatible */
     white-space: normal;
-    /* dozvoljava višeredni prikaz */
+    /* allows multi-line display */
     hyphens: none;
-    /* isključuje crtice (npr. Tradi-tional) */
+    /* disables hyphens (e.g. Tradi-tional) */
   }
 }
 
@@ -49,13 +49,13 @@ h2 {
     line-height: $line-height-2;
     letter-spacing: $letter-spacing-0;
     word-break: break-word;
-    /* dozvoljava prelamanje rečenica */
+    /* enables wrapping of sentences */
     overflow-wrap: break-word;
-    /* kompatibilno */
+    /* compatible */
     white-space: normal;
-    /* dozvoljava višeredni prikaz */
+    /* allows multi-line display */
     hyphens: none;
-    /* isključuje crtice (npr. Tradi-tional) */
+    /* disables hyphens (e.g. Tradi-tional) */
   }
 }
 

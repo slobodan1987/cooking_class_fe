@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
+/** This component displays a paginated list of reviews
+ * It allows users to navigate through the reviews with pagination controls
+ * The reviews are hardcoded for demonstration purposes, but can be replaced with dynamic data from a service
+ * The component uses Angular's CommonModule for basic functionalities and does not require any additional imports
+ */
 @Component({
   selector: 'app-review-list',
   standalone: true,

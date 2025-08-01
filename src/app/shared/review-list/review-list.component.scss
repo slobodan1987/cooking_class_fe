@@ -17,10 +17,10 @@
     padding: 24px;
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
 
-    // // flex-direction: column;
+    // flex-direction: column;
     height: 1200px;
     display: flex;
-    // // justify-content: space-between;
+    // justify-content: space-between;
 
     @media (max-width: 768px) {
         height: fit-content;
