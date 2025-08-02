@@ -1,0 +1,197 @@
+.icon-outer-container {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-bottom: 8px;
+
+    &::before {
+        content: '•';
+        margin-right: 8px;
+        font-size: 1.2em;
+    }
+
+    .icon-edit {
+        margin-left: 8px;
+        cursor: pointer;
+        vertical-align: middle;
+        color: blue;
+        margin-left: 0;
+    }
+
+    .icon-delete {
+        margin-left: 8px;
+        cursor: pointer;
+        vertical-align: middle;
+        color: red;
+        margin-left: 0;
+    }
+}
+
+.unavalable-day-add {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-bottom: 8px;
+
+    .icon-add {
+        margin-left: 8px;
+        cursor: pointer;
+        vertical-align: middle;
+        color: green;
+        margin-left: 0;
+    }
+}
+
+.admin-page-container {
+    padding: 20px;
+}
+
+.admin-fieldset {
+    background-color: lightblue;
+    border: 1px solid darkblue;
+    border-radius: 4px;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
+    margin-bottom: 20px;
+}
+
+.admin-fieldset-title {
+    background-color: white;
+    margin: 2px;
+    border: 1px solid darkblue;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 4px;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
+}
+
+// Popup Modal Styles
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    min-width: 400px;
+    max-width: 500px;
+
+    h3 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 1.5em;
+    }
+}
+
+.edit-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
+
+    &:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    }
+}
+
+.popup-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.save-btn,
+.cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.save-btn {
+    background-color: #28a745;
+    border: darkslategrey solid 2px;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
+    border-radius: 4px;
+    color: white;
+
+    &:hover {
+        background-color: #218838;
+    }
+}
+
+.cancel-btn {
+    background-color: #6c757d;
+    color: white;
+    border: darkslategrey solid 2px;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
+    border-radius: 4px;
+
+    &:hover {
+        background-color: #5a6268;
+    }
+}
+
+.unavailable-days-margin {
+    margin-left: 25px;
+}
+
+.add-unavailable-day-button {
+    margin-left: 5px;
+}
+
+// Date picker styling
+input[type="date"],
+input[readonly] {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    }
+
+    &::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        background: transparent;
+        color: #007bff;
+    }
+}
+
+// Flatpickr custom styling
+.flatpickr-input {
+    cursor: pointer !important;
+}
+
+.admin-button {
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
+    border-radius: 4px;
+}
+
+.admin-input-field {
+    border-radius: 4px;
+}

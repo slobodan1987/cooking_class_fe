@@ -37,6 +37,7 @@ export const mockEmptyBeState: IBEState = {
     endTime: '21:00',
     minPersonsPerClass: 2,
     maxPersonsPerClass: 12,
+    preparationTimeInHours: 24,
     pricePerPerson: 80,
   },
 };
@@ -50,13 +51,14 @@ export const mockBeStateWithDates: IBEState = {
   companyData: {
     name: 'Cooking Class Plitvice',
     googleCoordinates: 'Rastovača 14/1, Plitvička jezera',
-    address: 'Mukinje 33 , Plitvička jezera',
-    phone: '+38591 9146693',
+    address: 'Mukinje 33, Plitvička jezera',
+    phone: '+385 91 9146693',
     email: 'cooking.class.plitvice@gmail.com',
     startTime: '17:00',
     endTime: '21:00',
     minPersonsPerClass: 2,
     maxPersonsPerClass: 12,
+    preparationTimeInHours: 24,
     pricePerPerson: 80,
   },
 };

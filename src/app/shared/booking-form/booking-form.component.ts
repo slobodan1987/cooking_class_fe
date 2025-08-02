@@ -19,6 +19,12 @@ import { IBEState } from '../models/model';
 // Or, if the file does not exist, create 'model.ts' in the correct directory with the IBEState definition.
 import { CommonModule } from '@angular/common';
 import flatpickr from 'flatpickr';
+import { Croatian } from 'flatpickr/dist/l10n/hr.js';
+import { German } from 'flatpickr/dist/l10n/de.js';
+import { French } from 'flatpickr/dist/l10n/fr.js';
+import { Spanish } from 'flatpickr/dist/l10n/es.js';
+import { Italian } from 'flatpickr/dist/l10n/it.js';
+import { Czech } from 'flatpickr/dist/l10n/cs.js';
 import { CurrentLanguageService } from '../services/current-language.service';
 import { TranslatePipe } from '../pipes/translate.pipe';
 
@@ -51,6 +57,7 @@ export class BookingFormComponent implements AfterViewInit {
   @ViewChild('dateInput', { static: true })
   dateInput!: ElementRef<HTMLInputElement>;
   private _beState: IBEState | null = null;
+  private flatpickrInstance: any;
 
   @Input()
   set beState(value: IBEState | null) {
@@ -151,11 +158,65 @@ export class BookingFormComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.initializeFlatpickr();
+
+    // Subscribe to language changes and update Flatpickr locale
+    this.currentLanguageService.currentLanguage$.subscribe((language) => {
+      if (this.flatpickrInstance && language) {
+        this.updateFlatpickrLocale(language);
+      }
+    });
+  }
+
+  private getFlatpickrLocale(language: string): any {
+    switch (language) {
+      case 'hr':
+        return Croatian;
+      case 'de':
+        return German;
+      case 'fr':
+        return French;
+      case 'es':
+        return Spanish;
+      case 'it':
+        return Italian;
+      case 'cs':
+        return Czech;
+      case 'en-US':
+      default:
+        return 'default'; // English is the default
+    }
+  }
+
+  private initializeFlatpickr(): void {
     if (this.dateInput) {
-      flatpickr(this.dateInput.nativeElement, {
+      const currentLanguage =
+        this.currentLanguageService.currentLanguage$.getValue();
+      const locale = this.getFlatpickrLocale(currentLanguage || 'en-US');
+
+      this.flatpickrInstance = flatpickr(this.dateInput.nativeElement, {
         enable: this.allowedDates,
         allowInput: false,
         disableMobile: true,
+        locale: locale,
+        dateFormat: 'd.m.Y',
+      });
+    }
+  }
+
+  private updateFlatpickrLocale(language: string): void {
+    if (this.flatpickrInstance) {
+      const locale = this.getFlatpickrLocale(language);
+
+      // Destroy and recreate with new locale
+      this.flatpickrInstance.destroy();
+
+      this.flatpickrInstance = flatpickr(this.dateInput.nativeElement, {
+        enable: this.allowedDates,
+        allowInput: false,
+        disableMobile: true,
+        locale: locale,
+        dateFormat: 'd.m.Y',
       });
     }
   }

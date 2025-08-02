@@ -130,6 +130,12 @@ export interface ICompanyData {
    * - this is the price that will be charged for each person in the booking
    */
   pricePerPerson: number;
+
+  /**
+   * preparation time for the event (in hours)
+   */
+  preparationTimeInHours: number;
+
   /**
    * google coordinates for the address
    */
