@@ -6,10 +6,10 @@ import { InfoSectionComponent } from '../info-section/info-section.component';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
 import {
   companyDataMock,
-  reservationsMock,
-  reviewsMockExtensive,
-  reviewsMockShort,
+  completelyBookedDaysMock,
   manuallyExcludedDaysMock,
+  reservationsMock,
+  reviewsMockShort,
 } from '../models/mock';
 import { ICompanyData, IReservation, IReview } from '../models/model';
 import { TranslatePipe } from '../pipes/translate.pipe';
@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
   companyData: ICompanyData | null = null;
   reservations: IReservation[] = [];
   manuallyExcludedDays: string[] = [];
+  completelyBookedDays: string[] = [];
   reviews: IReview[] = [];
 
   constructor(public currentLanguageService: CurrentLanguageService) {}
@@ -47,7 +48,7 @@ export class HomeComponent implements OnInit {
     this.companyData = companyDataMock;
     this.reservations = reservationsMock;
     this.manuallyExcludedDays = manuallyExcludedDaysMock;
-    // this.reviews = reviewsMockExtensive;
+    this.completelyBookedDays = completelyBookedDaysMock;
     this.reviews = reviewsMockShort;
   }
 }

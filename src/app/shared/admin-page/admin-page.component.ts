@@ -232,10 +232,7 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
   readReservations() {
     this.reservations = reservationsMock;
     this.sortReservations();
-    this.disableAlreadyExistingReservations();
   }
-
-  disableAlreadyExistingReservations() {}
 
   sortReservations() {
     this.reservations.sort((a, b) => {

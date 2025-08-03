@@ -78,6 +78,14 @@ export const manuallyExcludedDaysMock: string[] = [
   '28.08.2025.',
 ];
 
+/** * completely booked days mock for testing purposes
+ * - this mock data is used to simulate the completely booked days in the application
+ * - it includes a list of dates that are completely booked and cannot be reserved
+ * - it is used to test the booking engine state and the booking form component
+ * - it can be used to display the completely booked days in the admin page or in the booking form
+ */
+export const completelyBookedDaysMock: string[] = ['29.08.2025.'];
+
 /**
  * reviews mock for testing purposes
  * - this mock data is used to simulate the reviews in the application

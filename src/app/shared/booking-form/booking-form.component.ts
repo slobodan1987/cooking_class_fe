@@ -55,7 +55,8 @@ interface Form {
  * It is designed to be standalone and can be used independently in different parts of the application.
  */
 @Component({
-  selector: 'app-booking-form[companyData][manuallyExcludedDays][reservations]',
+  selector:
+    'app-booking-form[companyData][manuallyExcludedDays][completelyBookedDays]',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, TranslatePipe],
   templateUrl: './booking-form.component.html',
@@ -67,8 +68,8 @@ export class BookingFormComponent implements AfterViewInit, OnInit, OnDestroy {
   private flatpickrInstance: any;
   companyData$ = new BehaviorSubject<ICompanyData | null>(null);
   manuallyExcludedDays$ = new BehaviorSubject<string[]>([]);
+  completelyBookedDays$ = new BehaviorSubject<string[]>([]);
   disabledDaysInDatepicker$ = new BehaviorSubject<string[]>([]); // This will be used to combine manually excluded days and booked reservations
-  reservations$ = new BehaviorSubject<IReservation[]>([]);
   subscriptions: Subscription[] = [];
   /**
    * Sets the company data and initializes the form.
@@ -101,23 +102,15 @@ export class BookingFormComponent implements AfterViewInit, OnInit, OnDestroy {
   }
   private _manuallyExcludedDays: string[] = [];
 
-  /**
-   * Sets the reservations for the booking form.
-   * @param value - An array of reservations that have been made.
-   * This setter method is used to update the component's state when the reservations change.
-   * It allows the component to manage and display the current reservations.
-   * Only reservations with status 'WAITING_FOR_CONFIRMATION' and 'CONFIRMED' are taken into account here.
-   * It is called when the component is initialized or when the reservations are updated.
-   */
   @Input()
-  set reservations(value: IReservation[]) {
-    this.reservations$.next(value);
-    this._reservations = value;
+  set completelyBookedDays(value: string[]) {
+    this._completelyBookedDays = value;
+    this.completelyBookedDays$.next(value);
   }
-  get reservations(): IReservation[] {
-    return this._reservations;
+  get completelyBookedDays(): string[] {
+    return this._completelyBookedDays;
   }
-  private _reservations: IReservation[] = [];
+  private _completelyBookedDays: string[] = [];
 
   todayDate: Date | null = null;
   pricePerPerson: number | null = null;
@@ -207,65 +200,47 @@ export class BookingFormComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    // Subscribe to changes in manually excluded days and completely booked days
     this.subscriptions.push(
-      combineLatest([
-        this.companyData$,
-        this.manuallyExcludedDays$,
-        this.reservations$,
-      ])
+      combineLatest([this.manuallyExcludedDays$, this.completelyBookedDays$])
         .pipe(
-          tap(([_, manuallyExcludedDays$, reservations]) => {
-            // Combine manually excluded days and booked reservations to disable them in the date picker
+          tap(([manuallyExcludedDays, completelyBookedDays]) => {
+            // Combine manually excluded days and completely booked days to disable them in the date picker
             this.disabledDaysInDatepicker$.next([
-              ...manuallyExcludedDays$,
-              ...reservations
-                .filter(
-                  (reservation) =>
-                    reservation.status === 'WAITING_FOR_CONFIRMATION' ||
-                    reservation.status === 'CONFIRMED'
-                )
-                .map((reservation) => reservation.date),
+              ...manuallyExcludedDays,
+              ...completelyBookedDays,
             ]);
           })
         )
         .subscribe()
     );
+
+    // Subscribe to company data changes for form setup
+    this.subscriptions.push(
+      this.companyData$.pipe(tap(() => this.setup())).subscribe()
+    );
   }
 
   ngAfterViewInit() {
+    // Initialize Flatpickr after view is ready
+    this.initializeFlatpickr();
+
+    // Subscribe to language changes and update Flatpickr locale
     this.subscriptions.push(
-      combineLatest([
-        this.companyData$,
-        this.manuallyExcludedDays$,
-        this.reservations$,
-        this.currentLanguageService.currentLanguage$,
-      ])
-        .pipe(
-          tap(([_, manuallyExcludedDays$, reservations]) => {
-            // Combine manually excluded days and booked reservations to disable them in the date picker
-            this.disabledDaysInDatepicker$.next([
-              ...manuallyExcludedDays$,
-              ...reservations
-                .filter(
-                  (reservation) =>
-                    reservation.status === 'WAITING_FOR_CONFIRMATION' ||
-                    reservation.status === 'CONFIRMED'
-                )
-                .map((reservation) => reservation.date),
-            ]);
-          }),
-          tap(() => this.initializeFlatpickr()),
-          tap((res) => {
-            const language = res[3];
-            if (this.flatpickrInstance && language) {
-              this.updateFlatpickrLocale(language);
-            } // Update the locale of flatpickr based on the current languageCode
-          }),
-          tap(() => {
-            this.setup();
-          })
-        )
-        .subscribe()
+      this.currentLanguageService.currentLanguage$.subscribe((language) => {
+        if (this.flatpickrInstance && language) {
+          this.updateFlatpickrLocale(language);
+        }
+      })
+    );
+
+    // Subscribe to disabled days changes and update Flatpickr
+    this.subscriptions.push(
+      this.disabledDaysInDatepicker$.subscribe(() => {
+        if (this.flatpickrInstance) {
+          this.updateFlatpickrDisabledDates();
+        }
+      })
     );
   }
 
@@ -297,14 +272,46 @@ export class BookingFormComponent implements AfterViewInit, OnInit, OnDestroy {
     }
   }
 
+  private getDisabledDatesForFlatpickr(): any[] {
+    // Convert disabled days from DD.MM.YYYY. format to YYYY-MM-DD for Flatpickr
+    const disabledDates = this.disabledDaysInDatepicker$
+      .getValue()
+      .map((date) => {
+        const dateParts = date.replace(/\.$/, '').split('.');
+        if (dateParts.length === 3) {
+          const day = dateParts[0].padStart(2, '0');
+          const month = dateParts[1].padStart(2, '0');
+          const year = dateParts[2];
+          return `${year}-${month}-${day}`;
+        }
+        return null; // Invalid date format
+      })
+      .filter((date) => date !== null); // Remove invalid dates
+
+    return [
+      ...disabledDates,
+      // Disable all weekends (Saturday = 6, Sunday = 0)
+      function (date: Date) {
+        return date.getDay() === 0 || date.getDay() === 6;
+      },
+      // Disable today and all past dates
+      function (date: Date) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Reset time to midnight for accurate comparison
+        return date <= today;
+      },
+    ];
+  }
+
   private initializeFlatpickr(): void {
     if (this.dateInput) {
       const currentLanguage =
         this.currentLanguageService.currentLanguage$.getValue();
       const locale = this.getFlatpickrLocale(currentLanguage || 'en-US');
+      const disabledDates = this.getDisabledDatesForFlatpickr();
 
       this.flatpickrInstance = flatpickr(this.dateInput.nativeElement, {
-        disable: this.disabledDaysInDatepicker$.getValue(),
+        disable: disabledDates,
         allowInput: false,
         disableMobile: true,
         locale: locale,
@@ -316,12 +323,33 @@ export class BookingFormComponent implements AfterViewInit, OnInit, OnDestroy {
   private updateFlatpickrLocale(language: string): void {
     if (this.flatpickrInstance) {
       const locale = this.getFlatpickrLocale(language);
+      const disabledDates = this.getDisabledDatesForFlatpickr();
 
       // Destroy and recreate with new locale
       this.flatpickrInstance.destroy();
 
       this.flatpickrInstance = flatpickr(this.dateInput.nativeElement, {
-        disable: this.disabledDaysInDatepicker$.getValue(),
+        disable: disabledDates,
+        allowInput: false,
+        disableMobile: true,
+        locale: locale,
+        dateFormat: 'd.m.Y',
+      });
+    }
+  }
+
+  private updateFlatpickrDisabledDates(): void {
+    if (this.flatpickrInstance) {
+      const currentLanguage =
+        this.currentLanguageService.currentLanguage$.getValue();
+      const locale = this.getFlatpickrLocale(currentLanguage || 'en-US');
+      const disabledDates = this.getDisabledDatesForFlatpickr();
+
+      // Destroy and recreate with updated disabled dates
+      this.flatpickrInstance.destroy();
+
+      this.flatpickrInstance = flatpickr(this.dateInput.nativeElement, {
+        disable: disabledDates,
         allowInput: false,
         disableMobile: true,
         locale: locale,
