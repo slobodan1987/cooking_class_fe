@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { CurrentLanguageService } from '../services/current-language.service';
 import { IReview } from '../models/model';
+import { TranslatePipe } from '../pipes/translate.pipe';
 
 /** This component displays a paginated list of reviews
  * It allows users to navigate through the reviews with pagination controls
@@ -11,7 +12,7 @@ import { IReview } from '../models/model';
 @Component({
   selector: 'app-review-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './review-list.component.html',
   styleUrls: ['./review-list.component.scss'],
 })

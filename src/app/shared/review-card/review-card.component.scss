@@ -9,10 +9,6 @@
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
 }
 
-.icon-outer-container {
-    border-bottom: #007bff solid 1px;
-}
-
 .yellow {
     background-color: #ffd700; // Gold/Yellow for waiting
 }
@@ -25,13 +21,13 @@
     background-color: #dc3545; // Red for canceled
 }
 
-.reservation-details-list {
+.review-details-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.reservation-card {
+.review-card {
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
     border-radius: 4px;
     border: solid 1px darkblue;
@@ -45,30 +41,18 @@
     margin-right: 2px;
 }
 
-.icon-confirm-reservation {
-    margin-left: 8px;
+.icon-confirm-review {
     cursor: pointer;
     vertical-align: middle;
     color: green;
-    margin-left: 0;
 }
 
-.icon-cancel-reservation {
-    margin-left: 8px;
+.icon-cancel-review {
     cursor: pointer;
     vertical-align: middle;
     color: red;
-    margin-left: 0;
 }
 
-.icon-recover-reservation {
-    margin-left: 8px;
-    cursor: pointer;
-    vertical-align: middle;
-    color: blue;
-    margin-left: 0;
-}
-
-.form-check-input {
-    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
+.icon-outer-container {
+    border-bottom: #007bff solid 1px;
 }

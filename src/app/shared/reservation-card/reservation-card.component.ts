@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IReservation } from '../models/model';
 import { StatusPipe } from '../pipes/status.pipe';
+import { FormsModule } from '@angular/forms';
 
 /**
  * Component to display a reservation card.
@@ -9,7 +10,7 @@ import { StatusPipe } from '../pipes/status.pipe';
  */
 @Component({
   selector: 'app-reservation-card',
-  imports: [StatusPipe, CommonModule],
+  imports: [StatusPipe, CommonModule, FormsModule],
   templateUrl: './reservation-card.component.html',
   styleUrl: './reservation-card.component.scss',
   standalone: true,
@@ -17,6 +18,8 @@ import { StatusPipe } from '../pipes/status.pipe';
 export class ReservationCardComponent {
   @Input() reservation!: IReservation;
   @Output() statusChanged = new EventEmitter<void>();
+
+  consent: boolean = false;
 
   getStatusClass(): string {
     switch (this.reservation.status) {

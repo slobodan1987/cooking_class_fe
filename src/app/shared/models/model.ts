@@ -115,4 +115,11 @@ export interface IReview {
    * review text provided by the reviewer
    */
   comment: string;
+  /**
+   * status of the review
+   * - 'WAITING_FOR_PUBLICATION': review is waiting for publication
+   * - 'PUBLISHED': review has been published
+   * - 'REJECTED': review has been rejected
+   */
+  status: 'WAITING_FOR_PUBLICATION' | 'PUBLISHED' | 'REJECTED';
 }

@@ -9,7 +9,7 @@ import {
   completelyBookedDaysMock,
   manuallyExcludedDaysMock,
   reservationsMock,
-  reviewsMockShort,
+  reviewsMockExtensive,
 } from '../models/mock';
 import { ICompanyData, IReservation, IReview } from '../models/model';
 import { TranslatePipe } from '../pipes/translate.pipe';
@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit {
     this.reservations = reservationsMock;
     this.manuallyExcludedDays = manuallyExcludedDaysMock;
     this.completelyBookedDays = completelyBookedDaysMock;
-    this.reviews = reviewsMockShort;
+    this.reviews = reviewsMockExtensive;
+    // this.reviews = [];
   }
 }

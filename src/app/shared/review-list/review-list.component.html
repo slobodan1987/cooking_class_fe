@@ -1,5 +1,9 @@
-<div class="review-list-container temporary-reviews-message">
-  <!-- <div>
+<!-- if there are no reviews, display a message -->
+<div
+  *ngIf="reviews.length === 0"
+  class="review-list-container-empty main-content"
+>
+  <div>
     <div class="bullet-container">
       <i class="ph ph-clock icon"></i
       ><strong>{{
@@ -13,8 +17,11 @@
           | translate : (currentLanguageService.currentLanguage$ | async)
       }}</span>
     </div>
-  </div> -->
+  </div>
+</div>
 
+<!-- if there are reviews, display them -->
+<div *ngIf="reviews.length > 0" class="review-list-container main-content">
   <ul class="review-list">
     <li *ngFor="let review of paginatedReviews" class="review-item">
       <h3 class="review-author">{{ review.author }}</h3>
@@ -35,7 +42,7 @@
       </p>
     </li>
   </ul>
-  <div class="pagination-controls">
+  <div *ngIf="paginatedReviews.length > 0" class="pagination-controls">
     <button
       class="review-list-navigation-left"
       (click)="prevPage()"

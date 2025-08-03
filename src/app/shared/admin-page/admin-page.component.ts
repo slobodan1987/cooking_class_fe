@@ -13,10 +13,11 @@ import {
   companyDataMock,
   manuallyExcludedDaysMock,
   reservationsMock,
-  reviewsMockShort,
+  reviewsMockExtensive,
 } from '../models/mock';
 import { ICompanyData, IReservation, IReview } from '../models/model';
 import { ReservationCardComponent } from '../reservation-card/reservation-card.component';
+import { ReviewCardComponent } from '../review-card/review-card.component';
 import { CurrentLanguageService } from '../services/current-language.service';
 
 /** * AdminPageComponent serves as the main entry point for the admin page of the application.
@@ -26,7 +27,12 @@ import { CurrentLanguageService } from '../services/current-language.service';
 @Component({
   selector:
     'app-admin-page[reservations][reviews][companyData][manuallyExcludedDays]',
-  imports: [CommonModule, FormsModule, ReservationCardComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReservationCardComponent,
+    ReviewCardComponent,
+  ],
   templateUrl: './admin-page.component.html',
   styleUrl: './admin-page.component.scss',
   standalone: true,
@@ -279,7 +285,11 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
   }
 
   readReviews() {
-    this.reviews = reviewsMockShort;
+    const reviews = reviewsMockExtensive;
+    // this.reviews = [];
+    this.reviews = reviews.filter(
+      (review) => review.status === 'WAITING_FOR_PUBLICATION'
+    ); // Initialize filtered reviews
   }
 
   readManuallyExcludedDays() {

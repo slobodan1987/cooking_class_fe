@@ -195,6 +195,19 @@
     </ul>
   </fieldset>
 
+  <fieldset class="admin-fieldset">
+    <legend>
+      <h4 class="admin-fieldset-title bullet-container">
+        <i class="ph ph-star icon"></i>Upravljanje recenzijama
+      </h4>
+    </legend>
+    <ul class="admin-data-list">
+      <div *ngFor="let review of reviews">
+        <app-review-card [review]="review"></app-review-card>
+      </div>
+    </ul>
+  </fieldset>
+
   <!-- Popup Modal -->
   <div *ngIf="isPopupOpen" class="popup-overlay" (click)="closePopup()">
     <div class="popup-content" (click)="$event.stopPropagation()">

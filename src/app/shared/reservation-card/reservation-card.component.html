@@ -4,36 +4,6 @@
       <i [class]="getStatusClass()"></i>
       Status: <b>{{ reservation.status | status }}</b>
     </li>
-    <!-- confirmation button -->
-    <button
-      *ngIf="reservation.status === 'WAITING_FOR_CONFIRMATION'"
-      (click)="confirmReservation()"
-      class="status-change-button"
-    >
-      <i class="ph ph-check-circle icon-confirm-reservation"></i>Potvrdi
-      rezervaciju
-    </button>
-    <!-- cancel button -->
-    <button
-      *ngIf="
-        reservation.status === 'CONFIRMED' ||
-        reservation.status === 'WAITING_FOR_CONFIRMATION'
-      "
-      (click)="cancelReservation()"
-      class="status-change-button"
-    >
-      <i class="ph ph-x-circle icon-cancel-reservation"></i>
-      Otkaži rezervaciju
-    </button>
-    <!-- revert reservation button -->
-    <button
-      *ngIf="reservation.status === 'CANCELED'"
-      (click)="recoverReservation()"
-      class="status-change-button"
-    >
-      <i class="ph ph-arrows-clockwise icon-recover-reservation"></i>Vrati
-      rezervaciju
-    </button>
 
     <li class="icon-outer-container">
       <i class="ph ph-calendar-blank icon"></i>
@@ -60,4 +30,44 @@
       Poruka: <b>{{ reservation.message }}</b>
     </li>
   </ul>
+  <label *ngIf="reservation.status !== 'CONFIRMED'">
+    <input type="checkbox" class="form-check-input" [(ngModel)]="consent" />
+    Provjerio/la sam da je ovaj termin slobodan na stranicama
+    <b>getyourguide.com</b>, <b>tripadvisor.com</b>, <b>getyourguide.com</b>,
+    <b>viator.com</b>, <b>airbnb.com</b> i sličnima.
+  </label>
+  <div>
+    <!-- confirmation button -->
+    <button
+      *ngIf="reservation.status === 'WAITING_FOR_CONFIRMATION'"
+      [disabled]="!consent"
+      (click)="confirmReservation()"
+      class="status-change-button"
+    >
+      <i class="ph ph-check-circle icon-confirm-reservation"></i>Potvrdi
+      rezervaciju
+    </button>
+    <!-- cancel button -->
+    <button
+      *ngIf="
+        reservation.status === 'CONFIRMED' ||
+        reservation.status === 'WAITING_FOR_CONFIRMATION'
+      "
+      (click)="cancelReservation()"
+      class="status-change-button"
+    >
+      <i class="ph ph-x-circle icon-cancel-reservation"></i>
+      Otkaži rezervaciju
+    </button>
+    <!-- revert reservation button -->
+    <button
+      *ngIf="reservation.status === 'CANCELED'"
+      [disabled]="!consent"
+      (click)="recoverReservation()"
+      class="status-change-button"
+    >
+      <i class="ph ph-arrows-clockwise icon-recover-reservation"></i>Vrati
+      rezervaciju
+    </button>
+  </div>
 </fieldset>

@@ -13,7 +13,25 @@
     padding: 24px;
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
     height: 1300px;
+
+    @media (max-width: 768px) {
+        height: fit-content;
+        max-height: 1300px;
+        padding: 16px;
+    }
+}
+
+.review-list-container-empty {
+
     display: flex;
+    align-items: center;
+    height: 100%;
+    font-style: italic;
+    border-radius: 4px;
+    background-color: colors.$neutral-creamy-white-500;
+    padding: 24px;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
+    height: 1300px;
 
     @media (max-width: 768px) {
         height: fit-content;
@@ -25,7 +43,7 @@
 .review-list {
     list-style: none;
     padding: 0;
-    padding-right: 8px;
+    padding-right: 16px;
     margin-left: 0;
     margin-top: 0;
     margin-bottom: 0;
@@ -104,7 +122,6 @@ button:disabled {
     margin-left: 8px;
 }
 
-.temporary-reviews-message {
+.main-content {
     font-style: italic;
-    // align-self: center;
 }

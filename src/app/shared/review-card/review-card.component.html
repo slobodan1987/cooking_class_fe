@@ -1,0 +1,35 @@
+<fieldset class="review-card">
+  <ul class="review-details-list">
+    <!-- <li class="icon-outer-container">
+      <i [class]="getStatusClass()"></i>
+      Status: <b>{{ review.status | reviewStatus }}</b>
+    </li> -->
+
+    <li class="icon-outer-container">
+      <i class="ph ph-envelope icon"></i>
+      E-mail autora: <b>{{ review.email }}</b>
+    </li>
+    <li class="icon-outer-container">
+      <i class="ph ph-user-circle icon"></i>
+      Ime: <b>{{ review.author }}</b>
+    </li>
+    <li class="icon-outer-container">
+      <i class="ph ph-star icon"></i>
+      Ocijena: <b>{{ review.rating }}</b>
+    </li>
+    <li class="icon-outer-container">
+      <i class="ph ph-chat-circle icon"></i>
+      Komentar: <b>{{ review.comment }}</b>
+    </li>
+
+    <!-- confirmation button -->
+    <button (click)="publishReview()" class="status-change-button">
+      <i class="ph ph-check-circle icon-confirm-review"></i>Objavi recenziju
+    </button>
+    <!-- cancel button -->
+    <button (click)="rejectReview()" class="status-change-button">
+      <i class="ph ph-x-circle icon-cancel-review"></i>
+      Nemoj objaviti recenziju
+    </button>
+  </ul>
+</fieldset>
