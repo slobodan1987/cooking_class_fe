@@ -43,6 +43,12 @@
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
     border-radius: 4px;
     margin-right: 2px;
+    height: 32px;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        margin-bottom: 4px;
+    }
 }
 
 .icon-confirm-reservation {
@@ -71,4 +77,8 @@
 
 .form-check-input {
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
+}
+
+.reservation-actions {
+    margin-top: 4px;
 }

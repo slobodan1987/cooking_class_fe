@@ -335,7 +335,7 @@ export const reviewsMockExtensive: IReview[] = [
     rating: 3,
     comment:
       'The cooking class was enjoyable and I did learn some interesting Croatian recipes. The instructor was knowledgeable and the ingredients were of good quality. However, I found the price of 80 euros per person to be quite steep for what was offered. While the experience was pleasant, I expected more value for the money - perhaps more dishes to prepare, additional cooking techniques, or maybe some take-home materials like recipe cards. The class duration felt appropriate, but for this price point, I would have appreciated some extras to make it feel more worthwhile. That said, the food we prepared was delicious and the location near Plitvice is beautiful.',
-    status: 'PUBLISHED',
+    status: 'WAITING_FOR_PUBLICATION',
   },
   {
     author: 'Faye White',

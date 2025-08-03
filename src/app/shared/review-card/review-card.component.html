@@ -23,13 +23,15 @@
     </li>
 
     <!-- confirmation button -->
-    <button (click)="publishReview()" class="status-change-button">
-      <i class="ph ph-check-circle icon-confirm-review"></i>Objavi recenziju
-    </button>
-    <!-- cancel button -->
-    <button (click)="rejectReview()" class="status-change-button">
-      <i class="ph ph-x-circle icon-cancel-review"></i>
-      Nemoj objaviti recenziju
-    </button>
+    <div class="review-actions">
+      <button (click)="publishReview()" class="status-change-button">
+        <i class="ph ph-check-circle icon-confirm-review"></i>Objavi recenziju
+      </button>
+      <!-- cancel button -->
+      <button (click)="rejectReview()" class="status-change-button">
+        <i class="ph ph-x-circle icon-cancel-review"></i>
+        Nemoj objaviti recenziju
+      </button>
+    </div>
   </ul>
 </fieldset>

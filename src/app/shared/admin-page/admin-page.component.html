@@ -6,7 +6,40 @@
   />
   <h2>Dobrodošli na administratorsku stranicu!</h2>
 
-  <fieldset class="admin-fieldset upper-section">
+  <!-- Table of Contents -->
+  <nav class="table-of-contents">
+    <h3 class="toc-title"><i class="ph ph-list icon"></i>Sadržaj stranice</h3>
+    <ul class="toc-list">
+      <li class="toc-item">
+        <button (click)="scrollToSection('company-data')" class="toc-link">
+          <i class="ph ph-identification-card icon"></i>Upravljanje podacima
+        </button>
+      </li>
+      <li class="toc-item">
+        <button (click)="scrollToSection('dates-management')" class="toc-link">
+          <i class="ph ph-calendar icon"></i>Upravljanje danima
+        </button>
+      </li>
+      <li class="toc-item">
+        <button
+          (click)="scrollToSection('reservations-management')"
+          class="toc-link"
+        >
+          <i class="ph ph-calendar-dots icon"></i>Upravljanje rezervacijama
+        </button>
+      </li>
+      <li class="toc-item">
+        <button
+          (click)="scrollToSection('reviews-management')"
+          class="toc-link"
+        >
+          <i class="ph ph-star icon"></i>Upravljanje recenzijama
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <fieldset class="admin-fieldset-company-data" id="company-data">
     <legend>
       <h4 class="admin-fieldset-title bullet-container">
         <i class="ph ph-identification-card icon"></i>Upravljanje podacima
@@ -142,7 +175,7 @@
     </ul>
   </fieldset>
 
-  <fieldset class="admin-fieldset">
+  <fieldset class="admin-fieldset-dates" id="dates-management">
     <legend>
       <h4 class="admin-fieldset-title bullet-container">
         <i class="ph ph-calendar icon"></i>Upravljanje danima
@@ -179,7 +212,7 @@
     </div>
   </fieldset>
 
-  <fieldset class="admin-fieldset">
+  <fieldset class="admin-fieldset-reservations" id="reservations-management">
     <legend>
       <h4 class="admin-fieldset-title bullet-container">
         <i class="ph ph-calendar-dots icon"></i>Upravljanje rezervacijama
@@ -195,7 +228,7 @@
     </ul>
   </fieldset>
 
-  <fieldset class="admin-fieldset">
+  <fieldset class="admin-fieldset-reviews" id="reviews-management">
     <legend>
       <h4 class="admin-fieldset-title bullet-container">
         <i class="ph ph-star icon"></i>Upravljanje recenzijama
