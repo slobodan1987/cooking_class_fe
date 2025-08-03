@@ -1,14 +1,16 @@
 .icon-outer-container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     vertical-align: middle;
     margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: #007bff solid 1px;
 
-    &::before {
-        content: '•';
-        margin-right: 8px;
-        font-size: 1.2em;
-    }
+    // &::before {
+    //     content: '•';
+    //     margin-right: 8px;
+    //     font-size: 1.2em;
+    // }
 
     .icon-edit {
         margin-left: 8px;
@@ -24,6 +26,10 @@
         vertical-align: middle;
         color: red;
         margin-left: 0;
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
     }
 }
 
@@ -97,7 +103,7 @@
 .edit-input {
     width: 100%;
     padding: 12px;
-    border: 2px solid #ddd;
+    border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
     margin-bottom: 20px;
@@ -129,7 +135,7 @@
 
 .save-btn {
     background-color: #28a745;
-    border: darkslategrey solid 2px;
+    border: darkslategrey solid 1px;
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
     border-radius: 4px;
     color: white;
@@ -142,7 +148,7 @@
 .cancel-btn {
     background-color: #6c757d;
     color: white;
-    border: darkslategrey solid 2px;
+    border: darkslategrey solid 1px;
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.38);
     border-radius: 4px;
 
@@ -151,11 +157,11 @@
     }
 }
 
-.unavailable-days-margin {
+.manually-excluded-days-margin {
     margin-left: 25px;
 }
 
-.add-unavailable-day-button {
+.add-manually-excluded-day-button {
     margin-left: 5px;
 }
 
@@ -163,7 +169,7 @@
 input[type="date"],
 input[readonly] {
     padding: 8px 12px;
-    border: 2px solid #ddd;
+    border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
     background-color: white;
@@ -194,4 +200,11 @@ input[readonly] {
 
 .admin-input-field {
     border-radius: 4px;
+}
+
+.admin-data-list,
+.manually-excluded-days-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }

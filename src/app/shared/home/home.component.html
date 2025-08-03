@@ -147,10 +147,14 @@
       <div class="booking-and-reviews">
         <div class="booking-form-container">
           <!-- booking form -->
-          <app-booking-form [beState]="beState"></app-booking-form>
+          <app-booking-form
+            [companyData]="companyData"
+            [manuallyExcludedDays]="manuallyExcludedDays"
+            [reservations]="reservations"
+          ></app-booking-form>
         </div>
         <div class="review-list-container">
-          <app-review-list></app-review-list>
+          <app-review-list [reviews]="reviews"></app-review-list>
         </div>
       </div>
 
@@ -193,7 +197,7 @@
       </div> -->
 
       <!-- info -->
-      <app-info-section [beState]="beState"></app-info-section>
+      <app-info-section [companyData]="companyData"></app-info-section>
     </div>
   </div>
 </div>

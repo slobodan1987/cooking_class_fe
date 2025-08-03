@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CurrentLanguageService } from '../services/current-language.service';
-import { TranslatePipe } from '../pipes/translate.pipe';
+import { IReview } from '../models/model';
 
 /** This component displays a paginated list of reviews
  * It allows users to navigate through the reviews with pagination controls
@@ -11,22 +11,33 @@ import { TranslatePipe } from '../pipes/translate.pipe';
 @Component({
   selector: 'app-review-list',
   standalone: true,
-  imports: [CommonModule, TranslatePipe],
+  imports: [CommonModule],
   templateUrl: './review-list.component.html',
   styleUrls: ['./review-list.component.scss'],
 })
 export class ReviewListComponent {
-  reviewsPerPage = 10;
-  currentPage = 1;
+  @Input()
+  set reviews(value: IReview[]) {
+    this._reviews = value;
+    this.currentPage = 1; // Reset to first page when reviews change
+  }
+  get reviews(): IReview[] {
+    return this._reviews;
+  }
+  private _reviews: IReview[] = [];
+
+  // Pagination properties
+  readonly reviewsPerPage = 10; // Number of reviews to display per page
+  currentPage = 1; // Current page number
 
   constructor(public currentLanguageService: CurrentLanguageService) {}
 
-  reviews = Array.from({ length: 45 }, (_, i) => ({
-    author: `Korisnik${i + 1}`,
-    comment: `Ovo je komentar korisnika broj ${i + 1}. Proizvod je bio ${
-      i % 2 === 0 ? 'odličan' : 'solidan'
-    }.`,
-  }));
+  // reviews = Array.from({ length: 45 }, (_, i) => ({
+  //   author: `Korisnik${i + 1}`,
+  //   comment: `Ovo je komentar korisnika broj ${i + 1}. Proizvod je bio ${
+  //     i % 2 === 0 ? 'odličan' : 'solidan'
+  //   }.`,
+  // }));
 
   get paginatedReviews() {
     const start = (this.currentPage - 1) * this.reviewsPerPage;
@@ -49,5 +60,24 @@ export class ReviewListComponent {
     const start = (this.currentPage - 1) * this.reviewsPerPage + 1;
     const end = Math.min(start + this.reviewsPerPage - 1, this.reviews.length);
     return `${start}–${end} [${this.reviews.length}]`;
+  }
+
+  /**
+   * Generate an array for filled stars based on rating
+   * @param rating - The rating number (1-5)
+   * @returns Array of numbers for filled stars
+   */
+  getStarArray(rating: number): number[] {
+    return Array.from({ length: Math.floor(rating) }, (_, i) => i);
+  }
+
+  /**
+   * Generate an array for empty stars based on rating
+   * @param rating - The rating number (1-5)
+   * @returns Array of numbers for empty stars
+   */
+  getEmptyStarArray(rating: number): number[] {
+    const emptyStars = 5 - Math.floor(rating);
+    return Array.from({ length: emptyStars }, (_, i) => i);
   }
 }

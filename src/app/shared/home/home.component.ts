@@ -4,11 +4,17 @@ import { BookingFormComponent } from '../booking-form/booking-form.component';
 import { CarouselComponent } from '../carousel/carousel.component';
 import { InfoSectionComponent } from '../info-section/info-section.component';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
-import { mockEmptyBeState } from '../models/mock';
-import { IBEState } from '../models/model';
+import {
+  companyDataMock,
+  reservationsMock,
+  reviewsMockExtensive,
+  reviewsMockShort,
+  manuallyExcludedDaysMock,
+} from '../models/mock';
+import { ICompanyData, IReservation, IReview } from '../models/model';
+import { TranslatePipe } from '../pipes/translate.pipe';
 import { ReviewListComponent } from '../review-list/review-list.component';
 import { CurrentLanguageService } from '../services/current-language.service';
-import { TranslatePipe } from '../pipes/translate.pipe';
 
 /** * HomeComponent serves as the main entry point for the home page of the application.
  * It initializes the booking engine state and includes various components such as the carousel, language switcher, review list, and booking form.
@@ -30,15 +36,18 @@ import { TranslatePipe } from '../pipes/translate.pipe';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  beState: IBEState | null = null;
+  companyData: ICompanyData | null = null;
+  reservations: IReservation[] = [];
+  manuallyExcludedDays: string[] = [];
+  reviews: IReview[] = [];
 
   constructor(public currentLanguageService: CurrentLanguageService) {}
 
   ngOnInit(): void {
-    this.readBEState();
-  }
-
-  readBEState() {
-    this.beState = mockEmptyBeState;
+    this.companyData = companyDataMock;
+    this.reservations = reservationsMock;
+    this.manuallyExcludedDays = manuallyExcludedDaysMock;
+    // this.reviews = reviewsMockExtensive;
+    this.reviews = reviewsMockShort;
   }
 }

@@ -1,21 +1,22 @@
+import { CommonModule } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
   OnInit,
   ViewChild,
-  ElementRef,
-  AfterViewInit,
 } from '@angular/core';
-import { mockBeStateWithDates } from '../models/mock';
-import { IBEState } from '../models/model';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import flatpickr from 'flatpickr';
 import { Croatian } from 'flatpickr/dist/l10n/hr.js';
-import { German } from 'flatpickr/dist/l10n/de.js';
-import { French } from 'flatpickr/dist/l10n/fr.js';
-import { Spanish } from 'flatpickr/dist/l10n/es.js';
-import { Italian } from 'flatpickr/dist/l10n/it.js';
-import { Czech } from 'flatpickr/dist/l10n/cs.js';
+import {
+  companyDataMock,
+  manuallyExcludedDaysMock,
+  reservationsMock,
+  reviewsMockShort,
+} from '../models/mock';
+import { ICompanyData, IReservation, IReview } from '../models/model';
+import { ReservationCardComponent } from '../reservation-card/reservation-card.component';
 import { CurrentLanguageService } from '../services/current-language.service';
 
 /** * AdminPageComponent serves as the main entry point for the admin page of the application.
@@ -23,79 +24,66 @@ import { CurrentLanguageService } from '../services/current-language.service';
  * The component is designed to be standalone and can be used independently in different parts of the application.
  */
 @Component({
-  selector: 'app-admin-page',
-  imports: [CommonModule, FormsModule],
+  selector:
+    'app-admin-page[reservations][reviews][companyData][manuallyExcludedDays]',
+  imports: [CommonModule, FormsModule, ReservationCardComponent],
   templateUrl: './admin-page.component.html',
   styleUrl: './admin-page.component.scss',
   standalone: true,
 })
 export class AdminPageComponent implements OnInit, AfterViewInit {
-  @ViewChild('newUnavailableDay', { static: true })
+  @ViewChild('newManuallyExcludedDay', { static: true })
   dateInput!: ElementRef<HTMLInputElement>;
 
-  beState: IBEState | null = null;
   isPopupOpen = false;
+  isPopupOpenContactingTechnicalAdministrator = false;
   editingField = '';
   editingValue = '';
-  unavailableDays: string[] = [];
-  additionalDisabledDays: string[] = []; // New array for additional disabled days
+  editingFieldByContactingTechnicalAdministrator = '';
+  /**
+   * Array of manually excluded days in the format DD.MM.YYYY.
+   * These days will be disabled in the Flatpickr date picker.
+   */
+  // unavailableDays: string[] = []; --- IGNORE ---
+  /**
+   * Array of manually excluded days in the format DD.MM.YYYY.
+   * These days will be disabled in the Flatpickr date picker.
+   */
+  manuallyExcludedDays: string[] = [];
+  /**
+   * Array of additional disabled days in the format DD.MM.YYYY.
+   * These days can be used for special cases or additional exclusions.
+   * They will also be disabled in the Flatpickr date picker.
+   * This is a new feature added to enhance the booking system's flexibility.
+   */
+  additionalDisabledDays: string[] = [];
   private flatpickrInstance: any;
+  reservations: IReservation[] = []; // New array for reservations
+  reviews: IReview[] = []; // New array for reviews
+  companyData: ICompanyData | null = null; // Placeholder for company data
 
   constructor(public currentLanguageService: CurrentLanguageService) {}
 
   ngOnInit(): void {
-    this.readBEState();
+    this.readCompanyData();
+    this.readReservations();
+    this.readReviews();
+    this.readManuallyExcludedDays();
   }
 
   ngAfterViewInit(): void {
     this.initializeFlatpickr();
   }
 
-  private getFlatpickrLocale(language: string): any {
-    switch (language) {
-      case 'hr':
-        return Croatian;
-      case 'de':
-        return German;
-      case 'fr':
-        return French;
-      case 'es':
-        return Spanish;
-      case 'it':
-        return Italian;
-      case 'cs':
-        return Czech;
-      case 'en-US':
-      default:
-        return 'default'; // English is the default
-    }
-  }
-
-  private updateFlatpickrLocale(language: string): void {
-    if (this.flatpickrInstance) {
-      // Store current disabled dates before destroying
-      const currentDisabledDates = this.getCurrentDisabledDates();
-
-      // Destroy and recreate with Croatian locale (admin page always uses Croatian)
-      this.flatpickrInstance.destroy();
-
-      const locale = Croatian;
-
-      this.flatpickrInstance = flatpickr(this.dateInput.nativeElement, {
-        disable: currentDisabledDates,
-        allowInput: false,
-        disableMobile: true,
-        dateFormat: 'd.m.Y',
-        locale: locale,
-        onChange: (selectedDates, dateStr) => {
-          // Handle date selection if needed
-        },
-      });
-    }
-  }
+  /**
+   * Get the currently disabled dates for the Flatpickr date picker.
+   * @returns An array of dates that are currently disabled in the Flatpickr date picker.
+   * This includes manually excluded days, additional disabled days, weekends, and past dates.
+   * The dates are formatted as YYYY-MM-DD for compatibility with Flatpickr.
+   */
   private getCurrentDisabledDates(): any[] {
     // Convert unavailable days from DD.MM.YYYY. format to YYYY-MM-DD for Flatpickr
-    const disabledDates = this.unavailableDays
+    const disabledDates = this.manuallyExcludedDays
       .map((date) => {
         const dateParts = date.replace(/\.$/, '').split('.');
         if (dateParts.length === 3) {
@@ -138,6 +126,12 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
     ];
   }
 
+  /**
+   * Initialize the Flatpickr date picker with the current disabled dates.
+   * This method sets up the date picker with the necessary configurations,
+   * including disabling weekends, past dates, and manually excluded days.
+   * It also applies the Croatian locale for date formatting.
+   */
   private initializeFlatpickr(): void {
     if (this.dateInput) {
       // Use Croatian as the default locale for admin page
@@ -159,10 +153,17 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
     }
   }
 
+  /**
+   * Update the Flatpickr date picker with the current manually excluded days.
+   * This method converts the manually excluded days to the format required by Flatpickr
+   * and updates the disabled dates in the date picker.
+   * It also handles additional disabled days if they are set.
+   * This is useful for dynamically managing unavailable dates in the booking system.
+   */
   private updateFlatpickrDisabledDates(): void {
     if (this.flatpickrInstance) {
       // Convert unavailable days for Flatpickr (from DD.MM.YYYY. to YYYY-MM-DD)
-      const disabledDates = this.unavailableDays
+      const disabledDates = this.manuallyExcludedDays
         .map((date) => {
           // Handle DD.MM.YYYY. format - remove trailing dot and split by dots
           const dateParts = date.replace(/\.$/, '').split('.');
@@ -220,12 +221,73 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
       });
 
       console.log('Flatpickr recreated with disabled dates:', allDisabledDates);
-      console.log('Current unavailable days:', this.unavailableDays);
+      console.log('Current manually excluded days:', this.manuallyExcludedDays);
     }
   }
 
-  readBEState() {
-    this.beState = mockBeStateWithDates;
+  readCompanyData() {
+    this.companyData = companyDataMock;
+  }
+
+  readReservations() {
+    this.reservations = reservationsMock;
+    this.sortReservations();
+    this.disableAlreadyExistingReservations();
+  }
+
+  disableAlreadyExistingReservations() {}
+
+  sortReservations() {
+    this.reservations.sort((a, b) => {
+      // Define status priority: WAITING_FOR_CONFIRMATION (1), CONFIRMED (2), CANCELED (3)
+      const getStatusPriority = (status: string): number => {
+        switch (status) {
+          case 'WAITING_FOR_CONFIRMATION':
+            return 1; // Yellow - highest priority
+          case 'CONFIRMED':
+            return 2; // Green - medium priority
+          case 'CANCELED':
+            return 3; // Red - lowest priority
+          default:
+            return 4; // Unknown status - lowest priority
+        }
+      };
+
+      const statusPriorityA = getStatusPriority(a.status);
+      const statusPriorityB = getStatusPriority(b.status);
+
+      // First, sort by status priority
+      if (statusPriorityA !== statusPriorityB) {
+        return statusPriorityA - statusPriorityB;
+      }
+
+      // If status is the same, sort by date (oldest first)
+      // Convert DD.MM.YYYY. format to Date object for comparison
+      const parseDate = (dateStr: string): Date => {
+        const dateParts = dateStr.replace(/\.$/, '').split('.');
+        if (dateParts.length === 3) {
+          const day = parseInt(dateParts[0], 10);
+          const month = parseInt(dateParts[1], 10) - 1; // Month is 0-indexed in Date
+          const year = parseInt(dateParts[2], 10);
+          return new Date(year, month, day);
+        }
+        return new Date(0); // Invalid date fallback
+      };
+
+      const dateA = parseDate(a.date);
+      const dateB = parseDate(b.date);
+
+      return dateA.getTime() - dateB.getTime(); // Oldest first
+    });
+  }
+
+  readReviews() {
+    this.reviews = reviewsMockShort;
+  }
+
+  readManuallyExcludedDays() {
+    this.manuallyExcludedDays = manuallyExcludedDaysMock;
+    this.updateFlatpickrDisabledDates();
   }
 
   editField(fieldName: string, currentValue: string) {
@@ -234,10 +296,20 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
     this.isPopupOpen = true;
   }
 
+  editFieldByContactingTechnicalAdministrator(fieldName: string) {
+    this.editingFieldByContactingTechnicalAdministrator = fieldName;
+    this.isPopupOpenContactingTechnicalAdministrator = true;
+  }
+
   closePopup() {
     this.isPopupOpen = false;
     this.editingField = '';
     this.editingValue = '';
+  }
+
+  closePopupContactingTechnicalAdministrator() {
+    this.isPopupOpenContactingTechnicalAdministrator = false;
+    this.editingFieldByContactingTechnicalAdministrator = '';
   }
 
   saveField(newValue: string) {
@@ -246,15 +318,37 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
     this.closePopup();
   }
 
-  removeUnavailableDay(day: string) {
-    const index = this.unavailableDays.indexOf(day);
+  /**
+   * Remove a date from the manually excluded days list.
+   * This method updates the manually excluded days and the Flatpickr disabled dates.
+   * It ensures that the specified date is removed from the list and the date picker is updated accordingly.
+   * This is useful for managing unavailable dates in the booking system.
+   * It allows the admin to dynamically adjust the booking availability by removing dates that are no longer excluded.
+   * This method is called when the user clicks the remove button for a specific date in the admin interface.
+   * It also updates the Flatpickr instance to reflect the changes in the disabled dates.
+   * This is a key feature for maintaining flexibility in the booking system.
+   * @param day - The date to be removed from the manually excluded days list.
+   */
+  removeManuallyExcludedDay(day: string) {
+    const index = this.manuallyExcludedDays.indexOf(day);
     if (index > -1) {
-      this.unavailableDays.splice(index, 1);
+      this.manuallyExcludedDays.splice(index, 1);
       this.updateFlatpickrDisabledDates();
     }
   }
 
-  addUnavailableDay(dateValue: string) {
+  /**
+   * Add a date to the manually excluded days list.
+   * This method updates the manually excluded days and the Flatpickr disabled dates.
+   * It ensures that the specified date is added to the list and the date picker is updated accordingly.
+   * This is useful for managing unavailable dates in the booking system.
+   * It allows the admin to dynamically adjust the booking availability by adding new dates that should be excluded.
+   * This method is called when the user submits a new date in the admin interface.
+   * It also updates the Flatpickr instance to reflect the changes in the disabled dates.
+   * This is a key feature for maintaining flexibility in the booking system.
+   * @param dateValue - The date to be added to the manually excluded days list.
+   */
+  addManuallyExcludedDay(dateValue: string) {
     if (dateValue) {
       // Ensure the date has the correct format (DD.MM.YYYY.)
       const normalizedDate = dateValue.endsWith('.')
@@ -262,8 +356,8 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
         : dateValue + '.';
 
       // Check if date is not already in the list
-      if (!this.unavailableDays.includes(normalizedDate)) {
-        this.unavailableDays.push(normalizedDate);
+      if (!this.manuallyExcludedDays.includes(normalizedDate)) {
+        this.manuallyExcludedDays.push(normalizedDate);
 
         // Immediately update the Flatpickr disabled dates to include this new date
         this.updateFlatpickrDisabledDates();
@@ -274,69 +368,13 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
         }
 
         console.log(
-          `Date ${normalizedDate} added to unavailable days and disabled in picker`
+          `Date ${normalizedDate} added to manually excluded days and disabled in picker`
         );
       } else {
         console.log(
-          `Date ${normalizedDate} is already in unavailable days list`
+          `Date ${normalizedDate} is already in manually excluded days list`
         );
       }
     }
-  }
-
-  /**
-   * Adds additional disabled days to the datepicker
-   * @param days Array of dates in DD.MM.YYYY. format to disable
-   */
-  addAdditionalDisabledDays(days: string[]): void {
-    // Validate date format and filter out invalid dates
-    const validDates = days.filter((date) => {
-      const datePattern = /^\d{1,2}\.\d{1,2}\.\d{4}\.?$/;
-      return datePattern.test(date);
-    });
-
-    // Add only new dates that aren't already disabled
-    validDates.forEach((date) => {
-      const normalizedDate = date.endsWith('.') ? date : date + '.';
-      if (!this.additionalDisabledDays.includes(normalizedDate)) {
-        this.additionalDisabledDays.push(normalizedDate);
-      }
-    });
-
-    // Update the datepicker
-    this.updateFlatpickrDisabledDates();
-  }
-
-  /**
-   * Removes specific dates from additional disabled days
-   * @param days Array of dates in DD.MM.YYYY. format to remove from disabled list
-   */
-  removeAdditionalDisabledDays(days: string[]): void {
-    days.forEach((date) => {
-      const normalizedDate = date.endsWith('.') ? date : date + '.';
-      const index = this.additionalDisabledDays.indexOf(normalizedDate);
-      if (index > -1) {
-        this.additionalDisabledDays.splice(index, 1);
-      }
-    });
-
-    // Update the datepicker
-    this.updateFlatpickrDisabledDates();
-  }
-
-  /**
-   * Clears all additional disabled days
-   */
-  clearAdditionalDisabledDays(): void {
-    this.additionalDisabledDays = [];
-    this.updateFlatpickrDisabledDates();
-  }
-
-  /**
-   * Gets the current list of additional disabled days
-   * @returns Array of dates in DD.MM.YYYY. format
-   */
-  getAdditionalDisabledDays(): string[] {
-    return [...this.additionalDisabledDays];
   }
 }

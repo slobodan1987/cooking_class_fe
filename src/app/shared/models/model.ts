@@ -1,92 +1,43 @@
 /**
- * BE state
+ * IReservation interface represents a reservation made by a user.
+ * It contains all the necessary information about the reservation such as name, email, phone, date, guests, message, and status.
+ * The status can be 'WAITING_FOR_CONFIRMATION', 'CONFIRMED', or 'CANCELED'.
+ * This interface is used to manage reservations in the booking system.
  */
-export interface IBEState {
+export interface IReservation {
   /**
-   * array of dates containing all the bookings for that date
-   */
-  dates: IDate[];
-  /**
-   * company data containing address, phone, email, start and end time, min and max persons per class, price per person, and max days in future
-   */
-  companyData: ICompanyData;
-}
-
-/**
- * date object containing all the bookings for that date
- */
-export interface IDate {
-  /**
-   * unique identifier for the date
-   */
-  id: string;
-  /**
-   * date in ISO format (e.g., "2023-10-01")
-   */
-  date: string;
-  /**
-   * array of bookings for that date
-   */
-  bookings: IBooking[];
-  /**
-   * status
-   */
-  status: 'AVAILABLE' | 'UNAVAILABLE';
-  /**
-   * custom start date for the date
-   * - this is used to override the default start time for the date
-   * - it is optional and can be left empty
-   */
-  customStartDate?: string;
-  /**
-   * custom end date for the date
-   * - this is used to override the default end time for the date
-   * - it is optional and can be left empty
-   */
-  customEndDate?: string;
-}
-
-/**
- * booking object containing all the information for a booking
- */
-export interface IBooking {
-  /**
-   * unique identifier for the booking
-   */
-  id?: string;
-  /**
-   * name of the person making the booking
+   * name of the person making the reservation
    */
   name: string;
   /**
-   * email of the person making the booking
+   * email of the person making the reservation
    */
   email: string;
   /**
-   * phone number of the person making the booking
+   * phone number of the person making the reservation
    */
   phone: string;
   /**
-   * number of guests for the booking
+   * date of the reservation
+   */
+  date: string;
+  /**
+   * number of guests for the reservation
    */
   guests: number;
   /**
-   * message for the booking
-   * - this can be used to provide additional information or requests for the booking
+   * message for the reservation
+   * - this can be used to provide additional information or requests for the reservation
    * - it is optional and can be left empty
    */
   message?: string;
   /**
-   * status of the booking
-   * - 'WAITING_FOR_CONFIRMATION': booking is waiting for confirmation
-   * - 'CONFIRMED': booking is confirmed
+   * status of the reservation
+   * - 'WAITING_FOR_CONFIRMATION': reservation is waiting for confirmation
+   * - 'CONFIRMED': reservation is confirmed
+   * - 'CANCELED': reservation is canceled
    */
   status: 'WAITING_FOR_CONFIRMATION' | 'CONFIRMED' | 'CANCELED';
-  /**
-   * request for review sent
-   * - this is used to track if a request for review has been sent to the user after the booking
-   */
-  requestForReviewSent: boolean;
 }
 
 /**
@@ -140,4 +91,28 @@ export interface ICompanyData {
    * google coordinates for the address
    */
   googleCoordinates: string;
+}
+
+/**
+ * IReview interface represents a review made by a user.
+ * It contains the name of the reviewer, their email, rating, and the review text.
+ * This interface is used to manage reviews in the application.
+ */
+export interface IReview {
+  /**
+   * name of the reviewer
+   */
+  author: string;
+  /**
+   * email of the reviewer
+   */
+  email: string;
+  /**
+   * rating given by the reviewer (1 to 5 stars)
+   */
+  rating: number;
+  /**
+   * review text provided by the reviewer
+   */
+  comment: string;
 }

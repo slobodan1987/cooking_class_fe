@@ -12,149 +12,131 @@
         <i class="ph ph-identification-card icon"></i>Upravljanje podacima
       </h4>
     </legend>
-    <ul>
+    <ul class="admin-data-list">
       <li class="icon-outer-container">
-        Ime kompanije: <b>{{ beState?.companyData?.name }}</b
-        ><button
+        Naziv tvrtke:<b>{{ companyData?.name }}</b>
+        <button
           class="admin-button"
-          (click)="editField('Ime kompanije', beState?.companyData?.name || '')"
+          (click)="editField('Naziv tvrtke', companyData?.name || '')"
         >
-          <i class="ph ph-pencil-simple icon-edit"></i>Promeni
+          <i class="ph ph-pencil-simple icon-edit"></i>Promijeni
         </button>
       </li>
       <li class="icon-outer-container">
-        Adresa kompanije: <b>{{ beState?.companyData?.address }}</b
+        Adresa tvrtke: <b>{{ companyData?.address }}</b
+        ><button
+          class="admin-button"
+          (click)="editField('Adresa tvrtke', companyData?.address || '')"
+        >
+          <i class="ph ph-pencil-simple icon-edit"></i>Promijeni
+        </button>
+      </li>
+      <li class="icon-outer-container">
+        Telefon tvrtke: <b>{{ companyData?.phone }}</b
+        ><button
+          class="admin-button"
+          (click)="editField('Telefon tvrtke', companyData?.phone || '')"
+        >
+          <i class="ph ph-pencil-simple icon-edit"></i>Promijeni
+        </button>
+      </li>
+      <li class="icon-outer-container">
+        E-mail tvrtke: <b>{{ companyData?.email }}</b
+        ><button
+          class="admin-button"
+          (click)="editField('E-mail tvrtke', companyData?.email || '')"
+        >
+          <i class="ph ph-pencil-simple icon-edit"></i>Promijeni
+        </button>
+      </li>
+      <li class="icon-outer-container">
+        Vrijeme početka događaja:
+        <b>{{ companyData?.startTime }}</b
         ><button
           class="admin-button"
           (click)="
-            editField('Adresa kompanije', beState?.companyData?.address || '')
+            editField('Vrijeme početka događaja', companyData?.startTime || '')
           "
         >
-          <i class="ph ph-pencil-simple icon-edit"></i>Promeni
+          <i class="ph ph-pencil-simple icon-edit"></i>Promijeni
         </button>
       </li>
       <li class="icon-outer-container">
-        Telefon kompanije: <b>{{ beState?.companyData?.phone }}</b
+        Vrijeme završetka događaja: <b>{{ companyData?.endTime }}</b
         ><button
           class="admin-button"
           (click)="
-            editField('Telefon kompanije', beState?.companyData?.phone || '')
+            editField('Vrijeme završetka događaja', companyData?.endTime || '')
           "
         >
-          <i class="ph ph-pencil-simple icon-edit"></i>Promeni
+          <i class="ph ph-pencil-simple icon-edit"></i>Promijeni
         </button>
       </li>
       <li class="icon-outer-container">
-        E-mail kompanije: <b>{{ beState?.companyData?.email }}</b
+        Najmanji broj sudionika u događaju:
+        <b>{{ companyData?.minPersonsPerClass }}</b
         ><button
           class="admin-button"
           (click)="
-            editField('E-mail kompanije', beState?.companyData?.email || '')
+            editFieldByContactingTechnicalAdministrator(
+              'Najmanji broj sudionika u događaju'
+            )
           "
         >
-          <i class="ph ph-pencil-simple icon-edit"></i>Promeni
+          <i class="ph ph-pencil-simple icon-edit"></i>Promijeni
         </button>
       </li>
       <li class="icon-outer-container">
-        Vreme početka događaja:
-        <b>{{ beState?.companyData?.startTime }}</b
+        Najveći broj sudionika u događaju:
+        <b>{{ companyData?.maxPersonsPerClass }}</b
+        ><button
+          class="admin-button"
+          (click)="
+            editFieldByContactingTechnicalAdministrator(
+              'Najveći broj sudionika u događaju'
+            )
+          "
+        >
+          <i class="ph ph-pencil-simple icon-edit"></i>Promijeni
+        </button>
+      </li>
+      <li class="icon-outer-container">
+        Cijena po osobi: <b>{{ companyData?.pricePerPerson }} €</b
         ><button
           class="admin-button"
           (click)="
             editField(
-              'Vreme početka događaja',
-              beState?.companyData?.startTime || ''
+              'Cijena po osobi (€)',
+              companyData?.pricePerPerson?.toString() || ''
             )
           "
         >
-          <i class="ph ph-pencil-simple icon-edit"></i>Promeni
+          <i class="ph ph-pencil-simple icon-edit"></i>Promijeni
         </button>
       </li>
       <li class="icon-outer-container">
-        Vreme završetka događaja: <b>{{ beState?.companyData?.endTime }}</b
+        Vrijeme za pripremu pojedinačnog događaja:
+        <b>{{ companyData?.preparationTimeInHours }} h</b
         ><button
           class="admin-button"
           (click)="
-            editField(
-              'Vreme završetka događaja',
-              beState?.companyData?.endTime || ''
+            editFieldByContactingTechnicalAdministrator(
+              'Vrijeme za pripremu pojedinačnog događaja'
             )
           "
         >
-          <i class="ph ph-pencil-simple icon-edit"></i>Promeni
+          <i class="ph ph-pencil-simple icon-edit"></i>Promijeni
         </button>
       </li>
       <li class="icon-outer-container">
-        Minimalan broj učesnika u događaju:
-        <b>{{ beState?.companyData?.minPersonsPerClass }}</b
-        ><button
-          class="admin-button"
-          (click)="
-            editField(
-              'Minimalan broj učesnika u događaju',
-              beState?.companyData?.minPersonsPerClass?.toString() || ''
-            )
-          "
-        >
-          <i class="ph ph-pencil-simple icon-edit"></i>Promeni
-        </button>
-      </li>
-      <li class="icon-outer-container">
-        Maksimalan broj učesnika u događaju:
-        <b>{{ beState?.companyData?.maxPersonsPerClass }}</b
-        ><button
-          class="admin-button"
-          (click)="
-            editField(
-              'Maksimalan broj učesnika u događaju',
-              beState?.companyData?.maxPersonsPerClass?.toString() || ''
-            )
-          "
-        >
-          <i class="ph ph-pencil-simple icon-edit"></i>Promeni
-        </button>
-      </li>
-      <li class="icon-outer-container">
-        Cena po osobi: <b>{{ beState?.companyData?.pricePerPerson }} €</b
-        ><button
-          class="admin-button"
-          (click)="
-            editField(
-              'Cena po osobi (€)',
-              beState?.companyData?.pricePerPerson?.toString() || ''
-            )
-          "
-        >
-          <i class="ph ph-pencil-simple icon-edit"></i>Promeni
-        </button>
-      </li>
-      <li class="icon-outer-container">
-        Vreme za pripremu pojedinačnog događaja:
-        <b>{{ beState?.companyData?.preparationTimeInHours }} h</b
-        ><button
-          class="admin-button"
-          (click)="
-            editField(
-              'Vreme za pripremu pojedinačnog događaja',
-              beState?.companyData?.preparationTimeInHours?.toString() || ''
-            )
-          "
-        >
-          <i class="ph ph-pencil-simple icon-edit"></i>Promeni
-        </button>
-      </li>
-      <li class="icon-outer-container">
-        Google koordinate: <b>{{ beState?.companyData?.googleCoordinates }}</b>
+        Google koordinate: <b>{{ companyData?.googleCoordinates }}</b>
         <button
           class="admin-button"
           (click)="
-            editField(
-              'Google koordinate',
-              beState?.companyData?.googleCoordinates || ''
-            )
+            editField('Google koordinate', companyData?.googleCoordinates || '')
           "
         >
-          <i class="ph ph-pencil-simple icon-edit"></i>Promeni
+          <i class="ph ph-pencil-simple icon-edit"></i>Promijeni
         </button>
       </li>
     </ul>
@@ -166,31 +148,31 @@
         <i class="ph ph-calendar icon"></i>Upravljanje danima
       </h4>
     </legend>
-    <div class="bullet-container unavailable-days-margin">
+    <div class="bullet-container">
       <i class="ph ph-prohibit icon"></i>Dani nedostupni za održavanje događaja:
     </div>
-    <ul>
-      <li class="icon-outer-container" *ngFor="let day of unavailableDays">
+    <ul class="manually-excluded-days-list">
+      <li class="icon-outer-container" *ngFor="let day of manuallyExcludedDays">
         <b>{{ day }}</b
-        ><button (click)="removeUnavailableDay(day)" class="admin-button">
+        ><button (click)="removeManuallyExcludedDay(day)" class="admin-button">
           <i class="ph ph-trash icon-delete"></i>Obriši
         </button>
       </li>
     </ul>
     <div class="unavalable-day-add">
       <input
-        class="input-field booking-form-date-input-field unavailable-days-margin admin-input-field"
-        #newUnavailableDay
+        class="input-field booking-form-date-input-field admin-input-field"
+        #newManuallyExcludedDay
         id="date"
-        name="unavailable-date"
+        name="manually-excluded-date"
         type="text"
         autocomplete="off"
         readonly
       />
 
       <button
-        (click)="addUnavailableDay(newUnavailableDay.value)"
-        class="add-unavailable-day-button admin-button"
+        (click)="addManuallyExcludedDay(newManuallyExcludedDay.value)"
+        class="add-manually-excluded-day-button admin-button"
       >
         <i class="ph ph-calendar-plus icon-add"></i>Dodaj
       </button>
@@ -200,38 +182,17 @@
   <fieldset class="admin-fieldset">
     <legend>
       <h4 class="admin-fieldset-title bullet-container">
-        <i class="ph ph-calendar icon"></i>Upravljanje rezervacijama
+        <i class="ph ph-calendar-dots icon"></i>Upravljanje rezervacijama
       </h4>
     </legend>
-    <div class="bullet-container unavailable-days-margin">
-      <i class="ph ph-prohibit icon"></i>Dani nedostupni za održavanje događaja:
-    </div>
-    <ul>
-      <li class="icon-outer-container" *ngFor="let day of unavailableDays">
-        <b>{{ day }}</b
-        ><button (click)="removeUnavailableDay(day)" class="admin-button">
-          <i class="ph ph-trash icon-delete"></i>Obriši
-        </button>
-      </li>
+    <ul class="admin-data-list">
+      <div *ngFor="let reservation of reservations">
+        <app-reservation-card
+          [reservation]="reservation"
+          (statusChanged)="sortReservations()"
+        ></app-reservation-card>
+      </div>
     </ul>
-    <div class="unavalable-day-add">
-      <input
-        class="input-field booking-form-date-input-field unavailable-days-margin admin-input-field"
-        #newUnavailableDay
-        id="date"
-        name="unavailable-date"
-        type="text"
-        autocomplete="off"
-        readonly
-      />
-
-      <button
-        (click)="addUnavailableDay(newUnavailableDay.value)"
-        class="add-unavailable-day-button admin-button"
-      >
-        <i class="ph ph-calendar-plus icon-add"></i>Dodaj
-      </button>
-    </div>
   </fieldset>
 
   <!-- Popup Modal -->
@@ -248,7 +209,30 @@
         <button (click)="saveField(editingValue)" class="save-btn">
           Sačuvaj
         </button>
-        <button (click)="closePopup()" class="cancel-btn">Odbaci</button>
+        <button (click)="closePopup()" class="cancel-btn">Odustani</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup (contact technical administrator) -->
+  <div
+    *ngIf="isPopupOpenContactingTechnicalAdministrator"
+    class="popup-overlay"
+    (click)="closePopupContactingTechnicalAdministrator()"
+  >
+    <div class="popup-content" (click)="$event.stopPropagation()">
+      <h3>Uredi polje: {{ editingFieldByContactingTechnicalAdministrator }}</h3>
+      <div class="bullet-container">
+        <i class="ph ph-phone-call icon"></i>Kontaktirajte tehničkog
+        administratora radi ove promjene.
+      </div>
+      <div class="popup-buttons">
+        <button
+          (click)="closePopupContactingTechnicalAdministrator()"
+          class="cancel-btn"
+        >
+          Razumijem
+        </button>
       </div>
     </div>
   </div>

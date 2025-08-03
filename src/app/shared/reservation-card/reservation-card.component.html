@@ -1,0 +1,63 @@
+<fieldset class="reservation-card">
+  <ul class="reservation-details-list">
+    <li class="icon-outer-container">
+      <i [class]="getStatusClass()"></i>
+      Status: <b>{{ reservation.status | status }}</b>
+    </li>
+    <!-- confirmation button -->
+    <button
+      *ngIf="reservation.status === 'WAITING_FOR_CONFIRMATION'"
+      (click)="confirmReservation()"
+      class="status-change-button"
+    >
+      <i class="ph ph-check-circle icon-confirm-reservation"></i>Potvrdi
+      rezervaciju
+    </button>
+    <!-- cancel button -->
+    <button
+      *ngIf="
+        reservation.status === 'CONFIRMED' ||
+        reservation.status === 'WAITING_FOR_CONFIRMATION'
+      "
+      (click)="cancelReservation()"
+      class="status-change-button"
+    >
+      <i class="ph ph-x-circle icon-cancel-reservation"></i>
+      Otkaži rezervaciju
+    </button>
+    <!-- revert reservation button -->
+    <button
+      *ngIf="reservation.status === 'CANCELED'"
+      (click)="recoverReservation()"
+      class="status-change-button"
+    >
+      <i class="ph ph-arrows-clockwise icon-recover-reservation"></i>Vrati
+      rezervaciju
+    </button>
+
+    <li class="icon-outer-container">
+      <i class="ph ph-calendar-blank icon"></i>
+      Datum: <b>{{ reservation.date }}</b>
+    </li>
+    <li class="icon-outer-container">
+      <i class="ph ph-envelope icon"></i>
+      E-mail: <b>{{ reservation.email }}</b>
+    </li>
+    <li class="icon-outer-container">
+      <i class="ph ph-phone icon"></i>
+      Broj telefona: <b>{{ reservation.phone }}</b>
+    </li>
+    <li class="icon-outer-container">
+      <i class="ph ph-user-circle icon"></i>
+      Ime i prezime: <b>{{ reservation.name }}</b>
+    </li>
+    <li class="icon-outer-container">
+      <i class="ph ph-users-three icon"></i>
+      Broj sudionika u grupi: <b>{{ reservation.guests }}</b>
+    </li>
+    <li class="icon-outer-container">
+      <i class="ph ph-chat-circle icon"></i>
+      Poruka: <b>{{ reservation.message }}</b>
+    </li>
+  </ul>
+</fieldset>

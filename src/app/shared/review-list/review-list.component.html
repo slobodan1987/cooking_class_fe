@@ -1,5 +1,5 @@
 <div class="review-list-container temporary-reviews-message">
-  <div>
+  <!-- <div>
     <div class="bullet-container">
       <i class="ph ph-clock icon"></i
       ><strong>{{
@@ -13,18 +13,31 @@
           | translate : (currentLanguageService.currentLanguage$ | async)
       }}</span>
     </div>
-  </div>
-  <!-- <ul class="review-list">
+  </div> -->
+
+  <ul class="review-list">
     <li *ngFor="let review of paginatedReviews" class="review-item">
       <h3 class="review-author">{{ review.author }}</h3>
+
+      <div class="review-rating" *ngIf="review.rating">
+        <span *ngFor="let star of getStarArray(review.rating)" class="star"
+          >★</span
+        >
+        <span
+          *ngFor="let star of getEmptyStarArray(review.rating)"
+          class="star empty"
+          >☆</span
+        >
+      </div>
+
       <p class="review-comment">
         <em>{{ review.comment }}</em>
       </p>
     </li>
-  </ul> -->
-  <!-- <div class="pagination-controls">
+  </ul>
+  <div class="pagination-controls">
     <button
-      class="review-list-navigation"
+      class="review-list-navigation-left"
       (click)="prevPage()"
       [disabled]="currentPage === 1"
     >
@@ -32,11 +45,11 @@
     </button>
     <span>{{ pageInfo }}</span>
     <button
-      class="review-list-navigation"
+      class="review-list-navigation-right"
       (click)="nextPage()"
       [disabled]="currentPage === totalPages"
     >
       ⟶
     </button>
-  </div> -->
+  </div>
 </div>

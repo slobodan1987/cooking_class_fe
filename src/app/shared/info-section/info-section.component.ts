@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { IBEState } from '../models/model';
-import { CurrentLanguageService } from '../services/current-language.service';
-import { TranslatePipe } from '../pipes/translate.pipe';
 import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { ICompanyData } from '../models/model';
+import { TranslatePipe } from '../pipes/translate.pipe';
+import { CurrentLanguageService } from '../services/current-language.service';
 
 /**
  * InfoSectionComponent displays information about the booking engine state.
@@ -10,25 +10,24 @@ import { CommonModule } from '@angular/common';
  * The component is designed to be used in a standalone manner and can be integrated into various parts of the application.
  */
 @Component({
-  selector: 'app-info-section[beState]',
+  selector: 'app-info-section[companyData]',
   standalone: true,
   imports: [TranslatePipe, CommonModule],
   templateUrl: './info-section.component.html',
   styleUrl: './info-section.component.scss',
 })
 export class InfoSectionComponent {
-  private _beState: IBEState | null = null;
-
   constructor(public currentLanguageService: CurrentLanguageService) {}
 
   @Input()
-  set beState(value: IBEState | null) {
-    this._beState = value;
+  set companyData(value: ICompanyData | null) {
+    this._companyData = value;
     this.setup();
   }
-  get beState(): IBEState | null {
-    return this._beState;
+  get companyData(): ICompanyData | null {
+    return this._companyData;
   }
+  private _companyData: ICompanyData | null = null;
   pricePerPerson: number | null = null;
 
   startTime: string | null = null;
@@ -38,13 +37,13 @@ export class InfoSectionComponent {
   companyPhone: string | null = null;
   companyMail: string | null = null;
   setup() {
-    this.pricePerPerson = this.beState?.companyData?.pricePerPerson ?? null;
+    this.pricePerPerson = this._companyData?.pricePerPerson ?? null;
 
-    this.startTime = this.beState?.companyData?.startTime ?? null;
-    this.endTime = this.beState?.companyData?.endTime ?? null;
+    this.startTime = this._companyData?.startTime ?? null;
+    this.endTime = this._companyData?.endTime ?? null;
 
-    this.address = this.beState?.companyData?.address ?? null;
-    this.companyPhone = this.beState?.companyData?.phone ?? null;
-    this.companyMail = this.beState?.companyData?.email ?? null;
+    this.address = this._companyData?.address ?? null;
+    this.companyPhone = this._companyData?.phone ?? null;
+    this.companyMail = this._companyData?.email ?? null;
   }
 }
