@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { ICompanyData } from '../../models/model';
 import { TranslatePipe } from '../../pipes/translate.pipe';
-import { CurrentLanguageSharedService } from '../../services/current-language-shared.service';
+import { CurrentLanguageService } from '../../services/current-language.service';
 
 /**
  * InfoSectionComponent displays information about the booking engine state.
@@ -17,7 +17,7 @@ import { CurrentLanguageSharedService } from '../../services/current-language-sh
   styleUrl: './info-section.component.scss',
 })
 export class InfoSectionComponent {
-  constructor(public currentLanguageService: CurrentLanguageSharedService) {}
+  constructor(public currentLanguageService: CurrentLanguageService) {}
 
   @Input()
   set companyData(value: ICompanyData | null) {

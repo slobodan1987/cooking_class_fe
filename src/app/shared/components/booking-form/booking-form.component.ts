@@ -27,7 +27,7 @@ import { Italian } from 'flatpickr/dist/l10n/it.js';
 import { BehaviorSubject, combineLatest, Subscription, tap } from 'rxjs';
 import { ICompanyData } from '../../models/model';
 import { TranslatePipe } from '../../pipes/translate.pipe';
-import { CurrentLanguageSharedService } from '../../services/current-language-shared.service';
+import { CurrentLanguageService } from '../../services/current-language.service';
 
 interface BookingForm {
   name: FormControl<string | null>;
@@ -121,7 +121,7 @@ export class BookingFormComponent implements AfterViewInit, OnInit, OnDestroy {
   form: FormGroup<Form> = this.createForm();
 
   constructor(
-    public currentLanguageService: CurrentLanguageSharedService // Assuming this service is used to get the current language
+    public currentLanguageService: CurrentLanguageService // Assuming this service is used to get the current language
   ) {}
 
   phoneValidator(): ValidatorFn {

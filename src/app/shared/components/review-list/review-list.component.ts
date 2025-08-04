@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { CurrentLanguageSharedService } from '../../services/current-language-shared.service';
+import { CurrentLanguageService } from '../../services/current-language.service';
 import { IReview } from '../../models/model';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 
@@ -31,7 +31,7 @@ export class ReviewListComponent {
   readonly reviewsPerPage = 10; // Number of reviews to display per page
   currentPage = 1; // Current page number
 
-  constructor(public currentLanguageService: CurrentLanguageSharedService) {}
+  constructor(public currentLanguageService: CurrentLanguageService) {}
 
   // reviews = Array.from({ length: 45 }, (_, i) => ({
   //   author: `Korisnik${i + 1}`,

@@ -1,22 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthPageComponent } from './auth-page.component';
+import { AdminAuthPageComponent } from './admin-auth-page.component';
 
-describe('AuthPageComponent', () => {
-  let component: AuthPageComponent;
-  let fixture: ComponentFixture<AuthPageComponent>;
+describe('AdminAuthPageComponent', () => {
+  let component: AdminAuthPageComponent;
+  let fixture: ComponentFixture<AdminAuthPageComponent>;
   let mockRouter: jasmine.SpyObj<Router>;
 
   beforeEach(async () => {
     const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
     await TestBed.configureTestingModule({
-      imports: [AuthPageComponent, FormsModule],
+      imports: [AdminAuthPageComponent, FormsModule],
       providers: [{ provide: Router, useValue: routerSpy }],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AuthPageComponent);
+    fixture = TestBed.createComponent(AdminAuthPageComponent);
     component = fixture.componentInstance;
     mockRouter = TestBed.inject(Router) as jasmine.SpyObj<Router>;
     fixture.detectChanges();

@@ -1,18 +1,23 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Component, OnDestroy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { catchError, of, Subscription, tap } from 'rxjs';
+import { AdminAuthService } from '../../services/admin-auth.service';
 import { HttpInteractionService } from '../../services/http-interaction.service';
 
+/**
+ * Component for admin authentication page.
+ * Allows admin to enter a password to access the admin section.
+ */
 @Component({
-  selector: 'app-auth-page',
+  selector: 'app-admin-auth-page',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './auth-page.component.html',
-  styleUrl: './auth-page.component.scss',
+  templateUrl: './admin-auth-page.component.html',
+  styleUrl: './admin-auth-page.component.scss',
 })
-export class AuthPageComponent implements OnDestroy {
+export class AdminAuthPageComponent implements OnDestroy {
   password = '';
   errorMessage = '';
   isLoading = false;
@@ -20,7 +25,8 @@ export class AuthPageComponent implements OnDestroy {
 
   constructor(
     private router: Router,
-    private httpInteractionService: HttpInteractionService
+    private httpInteractionService: HttpInteractionService,
+    private adminAuthService: AdminAuthService
   ) {}
 
   ngOnDestroy(): void {
@@ -42,15 +48,20 @@ export class AuthPageComponent implements OnDestroy {
         .pipe(
           tap((response) => {
             if (response.success) {
-              // Navigate to admin page (guard will now allow access)
-              this.router.navigate(['/admin']);
+              this.isLoading = false;
+              this.adminAuthService.setAdminAuthentication(true);
+            } else {
+              this.errorMessage = 'Greška. Pokušajte ponovno.';
+              this.password = '';
+              this.isLoading = false;
+              this.adminAuthService.setAdminAuthentication(false);
             }
-            this.isLoading = false;
           }),
           catchError(() => {
-            this.errorMessage = 'Netočna lozinka. Pokušajte ponovno.';
+            this.errorMessage = 'Greška. Pokušajte ponovno.';
             this.password = '';
             this.isLoading = false;
+            this.adminAuthService.setAdminAuthentication(false);
             return of(null); // Handle error gracefully
           })
         )
