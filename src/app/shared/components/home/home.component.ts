@@ -10,11 +10,11 @@ import {
   manuallyExcludedDaysMock,
   reservationsMock,
   reviewsMockExtensive,
-} from '../models/mock';
-import { ICompanyData, IReservation, IReview } from '../models/model';
-import { TranslatePipe } from '../pipes/translate.pipe';
+} from '../../models/mock';
+import { ICompanyData, IReservation, IReview } from '../../models/model';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 import { ReviewListComponent } from '../review-list/review-list.component';
-import { CurrentLanguageService } from '../services/current-language.service';
+import { CurrentLanguageSharedService } from '../../services/current-language-shared.service';
 
 /** * HomeComponent serves as the main entry point for the home page of the application.
  * It initializes the booking engine state and includes various components such as the carousel, language switcher, review list, and booking form.
@@ -41,8 +41,9 @@ export class HomeComponent implements OnInit {
   manuallyExcludedDays: string[] = [];
   completelyBookedDays: string[] = [];
   reviews: IReview[] = [];
+  title = 'cooking-class-website';
 
-  constructor(public currentLanguageService: CurrentLanguageService) {}
+  constructor(public currentLanguageService: CurrentLanguageSharedService) {}
 
   ngOnInit(): void {
     this.companyData = companyDataMock;

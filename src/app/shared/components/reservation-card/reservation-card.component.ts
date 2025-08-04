@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { IReservation } from '../models/model';
-import { StatusPipe } from '../pipes/status.pipe';
+import { IReservation } from '../../models/model';
+import { StatusPipe } from '../../pipes/status.pipe';
 import { FormsModule } from '@angular/forms';
 
 /**

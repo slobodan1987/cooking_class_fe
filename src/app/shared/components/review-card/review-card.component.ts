@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IReview } from '../models/model';
+import { IReview } from '../../models/model';
 
 import { CommonModule } from '@angular/common';
-import { ReviewStatusPipe } from '../pipes/review-status.pipe';
+import { ReviewStatusPipe } from '../../pipes/review-status.pipe';
 
 /**
  * ReviewCardComponent displays a review card with details such as author, comment, and status.

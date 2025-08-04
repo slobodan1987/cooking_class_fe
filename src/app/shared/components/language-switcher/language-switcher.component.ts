@@ -1,9 +1,9 @@
 import { CommonModule, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { FlagPipe } from '../pipes/flag.pipe';
+import { FlagPipe } from '../../pipes/flag.pipe';
 import { Language, LANGUAGES } from './languages';
-import { CurrentLanguageService } from '../services/current-language.service';
+import { CurrentLanguageSharedService } from '../../services/current-language-shared.service';
 
 interface LanguageForm {
   language: FormControl<
@@ -24,7 +24,7 @@ interface LanguageForm {
   styleUrl: './language-switcher.component.scss',
 })
 export class LanguageSwitcherComponent implements OnInit {
-  constructor(private currentLanguageService: CurrentLanguageService) {}
+  constructor(private currentLanguageService: CurrentLanguageSharedService) {}
   languages: Language[] = LANGUAGES;
   form: FormGroup<LanguageForm> = new FormGroup<LanguageForm>({
     language: new FormControl<

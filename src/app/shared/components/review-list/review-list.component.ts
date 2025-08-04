@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { CurrentLanguageService } from '../services/current-language.service';
-import { IReview } from '../models/model';
-import { TranslatePipe } from '../pipes/translate.pipe';
+import { CurrentLanguageSharedService } from '../../services/current-language-shared.service';
+import { IReview } from '../../models/model';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 /** This component displays a paginated list of reviews
  * It allows users to navigate through the reviews with pagination controls
@@ -31,7 +31,7 @@ export class ReviewListComponent {
   readonly reviewsPerPage = 10; // Number of reviews to display per page
   currentPage = 1; // Current page number
 
-  constructor(public currentLanguageService: CurrentLanguageService) {}
+  constructor(public currentLanguageService: CurrentLanguageSharedService) {}
 
   // reviews = Array.from({ length: 45 }, (_, i) => ({
   //   author: `Korisnik${i + 1}`,

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { LANGUAGES } from '../language-switcher/languages';
+import { LANGUAGES } from '../components/language-switcher/languages';
 
 // This pipe is used to transform a language code into a corresponding flag image path
 // It takes a language code as input and returns the path to the flag image

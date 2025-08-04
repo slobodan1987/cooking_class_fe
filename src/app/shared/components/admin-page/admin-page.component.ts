@@ -3,22 +3,24 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  OnInit,
+  OnDestroy,
   ViewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import flatpickr from 'flatpickr';
 import { Croatian } from 'flatpickr/dist/l10n/hr.js';
+import { Subscription } from 'rxjs';
 import {
   companyDataMock,
   manuallyExcludedDaysMock,
   reservationsMock,
   reviewsMockExtensive,
-} from '../models/mock';
-import { ICompanyData, IReservation, IReview } from '../models/model';
+} from '../../models/mock';
+import { ICompanyData, IReservation, IReview } from '../../models/model';
+import { CurrentLanguageSharedService } from '../../services/current-language-shared.service';
 import { ReservationCardComponent } from '../reservation-card/reservation-card.component';
 import { ReviewCardComponent } from '../review-card/review-card.component';
-import { CurrentLanguageService } from '../services/current-language.service';
 
 /** * AdminPageComponent serves as the main entry point for the admin page of the application.
  * It initializes the booking engine state with predefined dates and company data.
@@ -37,7 +39,7 @@ import { CurrentLanguageService } from '../services/current-language.service';
   styleUrl: './admin-page.component.scss',
   standalone: true,
 })
-export class AdminPageComponent implements OnInit, AfterViewInit {
+export class AdminPageComponent implements OnDestroy, AfterViewInit {
   @ViewChild('newManuallyExcludedDay', { static: true })
   dateInput!: ElementRef<HTMLInputElement>;
 
@@ -46,6 +48,8 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
   editingField = '';
   editingValue = '';
   editingFieldByContactingTechnicalAdministrator = '';
+  subscriptions: Subscription[] = [];
+  loading = false; // New loading state for async operations
   /**
    * Array of manually excluded days in the format DD.MM.YYYY.
    * These days will be disabled in the Flatpickr date picker.
@@ -68,9 +72,19 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
   reviews: IReview[] = []; // New array for reviews
   companyData: ICompanyData | null = null; // Placeholder for company data
 
-  constructor(public currentLanguageService: CurrentLanguageService) {}
+  constructor(
+    public currentLanguageService: CurrentLanguageSharedService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((sub) => sub.unsubscribe());
+    if (this.flatpickrInstance) {
+      this.flatpickrInstance.destroy();
+    }
+  }
+
+  private loadAdminData(): void {
     this.readCompanyData();
     this.readReservations();
     this.readReviews();
@@ -79,7 +93,18 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initializeFlatpickr();
+    this.loadAdminData();
   }
+
+  // /**
+  //  * Logout functionality - clear authentication
+  //  */
+  // logout(): void {
+  //   // Clear authentication token (secure - no password stored)
+  //   sessionStorage.removeItem('admin_auth_token');
+  //   // Redirect to auth page
+  //   this.router.navigate(['/auth']);
+  // }
 
   /**
    * Get the currently disabled dates for the Flatpickr date picker.
@@ -139,7 +164,12 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
    * It also applies the Croatian locale for date formatting.
    */
   private initializeFlatpickr(): void {
-    if (this.dateInput) {
+    if (this.dateInput && this.dateInput.nativeElement) {
+      // Destroy existing instance if it exists
+      if (this.flatpickrInstance) {
+        this.flatpickrInstance.destroy();
+      }
+
       // Use Croatian as the default locale for admin page
       const locale = Croatian;
       const disabledDates = this.getCurrentDisabledDates();
@@ -156,6 +186,10 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
       });
 
       console.log('Flatpickr initialized with Croatian locale');
+    } else {
+      console.log(
+        'Flatpickr initialization skipped - element not available or not authenticated'
+      );
     }
   }
 

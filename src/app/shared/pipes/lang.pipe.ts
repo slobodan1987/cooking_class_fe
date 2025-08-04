@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { LANGUAGES } from '../language-switcher/languages';
+import { LANGUAGES } from '../components/language-switcher/languages';
 
 @Pipe({
   name: 'lang',

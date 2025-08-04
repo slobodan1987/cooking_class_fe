@@ -1,0 +1,35 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>Pristup administratorskom dijelu</h2>
+
+    <form (ngSubmit)="validatePassword()" #authForm="ngForm">
+      <div class="password-input-group">
+        <label for="password">Lozinka:</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          required
+          autocomplete="current-password"
+          (keypress)="onKeyPress($event)"
+          class="password-input"
+          placeholder="Unesite lozinku"
+        />
+      </div>
+
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="!password || isLoading"
+        class="auth-button"
+      >
+        <span *ngIf="!isLoading">Pristup</span>
+        <span *ngIf="isLoading">Provjeravam...</span>
+      </button>
+    </form>
+  </div>
+</div>

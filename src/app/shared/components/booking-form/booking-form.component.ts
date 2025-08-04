@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -16,8 +17,6 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-// Or, if the file does not exist, create 'model.ts' in the correct directory with the IBEState definition.
-import { CommonModule } from '@angular/common';
 import flatpickr from 'flatpickr';
 import { Czech } from 'flatpickr/dist/l10n/cs.js';
 import { German } from 'flatpickr/dist/l10n/de.js';
@@ -25,16 +24,10 @@ import { Spanish } from 'flatpickr/dist/l10n/es.js';
 import { French } from 'flatpickr/dist/l10n/fr.js';
 import { Croatian } from 'flatpickr/dist/l10n/hr.js';
 import { Italian } from 'flatpickr/dist/l10n/it.js';
-import {
-  BehaviorSubject,
-  combineLatest,
-  Subscription,
-  tap,
-  withLatestFrom,
-} from 'rxjs';
-import { ICompanyData, IReservation } from '../models/model';
-import { TranslatePipe } from '../pipes/translate.pipe';
-import { CurrentLanguageService } from '../services/current-language.service';
+import { BehaviorSubject, combineLatest, Subscription, tap } from 'rxjs';
+import { ICompanyData } from '../../models/model';
+import { TranslatePipe } from '../../pipes/translate.pipe';
+import { CurrentLanguageSharedService } from '../../services/current-language-shared.service';
 
 interface BookingForm {
   name: FormControl<string | null>;
@@ -128,7 +121,7 @@ export class BookingFormComponent implements AfterViewInit, OnInit, OnDestroy {
   form: FormGroup<Form> = this.createForm();
 
   constructor(
-    public currentLanguageService: CurrentLanguageService // Assuming this service is used to get the current language
+    public currentLanguageService: CurrentLanguageSharedService // Assuming this service is used to get the current language
   ) {}
 
   phoneValidator(): ValidatorFn {
