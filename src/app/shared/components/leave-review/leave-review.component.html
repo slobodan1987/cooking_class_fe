@@ -1,0 +1,95 @@
+<div class="main-review-page-content">
+  <div
+    style="display: flex; flex-direction: row; justify-content: space-between"
+  >
+    <div>
+      <img
+        class="logo"
+        src="assets/img/lnh.png"
+        alt="Traditional Plitvice Lakes Cooking Class Logo"
+      />
+    </div>
+    <!-- language-switcher -->
+    <app-language-switcher></app-language-switcher>
+  </div>
+  <div class="review-page-container">
+    <div class="header-container">
+      <h2 class="header-title">
+        {{
+          "LeaveReviewComponent@@rateUs"
+            | translate : (currentLanguageService.currentLanguage$ | async)
+        }}
+        <i class="ph ph-smiley icon"></i>
+      </h2>
+    </div>
+
+    <div class="star-rating">
+      <span
+        *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+        (click)="selectedRating = star"
+        (mouseover)="hoveredRating = star"
+        (mouseleave)="hoveredRating = 0"
+        [ngClass]="{
+          'star-selected': star <= (hoveredRating || selectedRating),
+          'star-unselected': star > (hoveredRating || selectedRating)
+        }"
+        style="cursor: pointer; font-size: 2rem"
+      >
+        &#9733;
+      </span>
+    </div>
+
+    <textarea
+      class="review-textarea"
+      [placeholder]="
+        'BookingFormComponent@@reviewPlaceholder'
+          | translate : (currentLanguageService.currentLanguage$ | async)
+      "
+      [(ngModel)]="reviewText"
+      rows="10"
+    ></textarea>
+
+    <input
+      type="text"
+      class="review-input"
+      [placeholder]="
+        'BookingFormComponent@@namePlaceholder'
+          | translate : (currentLanguageService.currentLanguage$ | async)
+      "
+      [(ngModel)]="reviewerName"
+    />
+
+    <button
+      [ngClass]="{
+        'review-submit-button': !(
+          !reviewText ||
+          !reviewerName ||
+          !selectedRating ||
+          selectedRating === 0 ||
+          reviewText.length === 0 ||
+          reviewerName.length === 0
+        ),
+        'invalid-review-submit-button':
+          !reviewText ||
+          !reviewerName ||
+          !selectedRating ||
+          selectedRating === 0 ||
+          reviewText.length === 0 ||
+          reviewerName.length === 0
+      }"
+      [disabled]="
+        !reviewText ||
+        !reviewerName ||
+        !selectedRating ||
+        selectedRating === 0 ||
+        reviewText.length === 0 ||
+        reviewerName.length === 0
+      "
+    >
+      {{
+        "BookingFormComponent@@submitButton"
+          | translate : (currentLanguageService.currentLanguage$ | async)
+      }}
+    </button>
+  </div>
+</div>

@@ -16,7 +16,7 @@
     <h4 class="bullet-container">
       <i class="ph ph-calendar-check icon"></i>
       {{
-        "askForReservation"
+        "BookingFormComponent@@askForReservation"
           | translate : (currentLanguageService.currentLanguage$ | async)
       }}
     </h4>
@@ -25,7 +25,7 @@
       <label class="input-label icon-outer-container" for="name"
         ><i class="ph ph-user-circle icon"></i>
         {{
-          "nameAndSurname"
+          "BookingFormComponent@@nameAndSurname"
             | translate : (currentLanguageService.currentLanguage$ | async)
         }}</label
       >
@@ -44,7 +44,7 @@
       <label class="input-label icon-outer-container" for="email"
         ><i class="ph ph-envelope icon"></i>
         {{
-          "emailAddress"
+          "BookingFormComponent@@emailAddress"
             | translate : (currentLanguageService.currentLanguage$ | async)
         }}</label
       >
@@ -62,7 +62,7 @@
       <label class="input-label icon-outer-container" for="phone"
         ><i class="ph ph-phone icon"></i
         >{{
-          "mobileNumber"
+          "BookingFormComponent@@mobileNumber"
             | translate : (currentLanguageService.currentLanguage$ | async)
         }}</label
       >
@@ -80,7 +80,8 @@
       <label class="input-label icon-outer-container" for="date"
         ><i class="ph ph-calendar-blank icon"></i
         >{{
-          "date" | translate : (currentLanguageService.currentLanguage$ | async)
+          "BookingFormComponent@@date"
+            | translate : (currentLanguageService.currentLanguage$ | async)
         }}</label
       >
       <input
@@ -98,7 +99,7 @@
       <label class="input-label icon-outer-container" for="guests"
         ><i class="ph ph-users-three icon"></i
         >{{
-          "numberOfPersons"
+          "BookingFormComponent@@numberOfPersons"
             | translate : (currentLanguageService.currentLanguage$ | async)
         }}</label
       >
@@ -119,12 +120,16 @@
 
     <div class="form-field">
       <label class="input-label icon-outer-container" for="message"
-        ><i class="ph ph-chat-circle icon"></i>Poruka</label
-      >
+        ><i class="ph ph-chat-circle icon"></i>
+        {{
+          "BookingFormComponent@@message"
+            | translate : (currentLanguageService.currentLanguage$ | async)
+        }}
+      </label>
       <textarea
         class="message-textarea"
         [placeholder]="
-          'messagePlaceholder'
+          'BookingFormComponent@@messagePlaceholder'
             | translate : (currentLanguageService.currentLanguage$ | async)
         "
         formControlName="message"
@@ -138,7 +143,7 @@
       <p class="bullet-container">
         <i class="ph ph-warning-circle icon"></i
         >{{
-          "thisReservationIsNotAutomaticallyConfirmed"
+          "BookingFormComponent@@thisReservationIsNotAutomaticallyConfirmed"
             | translate : (currentLanguageService.currentLanguage$ | async)
         }}
       </p>
@@ -146,7 +151,7 @@
       <p class="bullet-container">
         <i class="ph ph-info icon"></i
         >{{
-          "fastBookingLabel"
+          "BookingFormComponent@@fastBookingLabel"
             | translate : (currentLanguageService.currentLanguage$ | async)
         }}
       </p>
@@ -155,7 +160,7 @@
         <i class="ph ph-users-three icon"></i
         ><span
           >{{
-            "numberOfPersonsPerClassLabel"
+            "BookingFormComponent@@numberOfPersonsPerClassLabel"
               | translate : (currentLanguageService.currentLanguage$ | async)
           }}
         </span>
@@ -165,7 +170,7 @@
         <i class="ph ph-currency-eur icon"></i
         ><span
           >{{
-            "paymentMethodsLabel"
+            "BookingFormComponent@@paymentMethodsLabel"
               | translate : (currentLanguageService.currentLanguage$ | async)
           }}
           <strong>{{ pricePerPerson }} EUR</strong>.</span
@@ -176,7 +181,7 @@
         <i class="ph ph-calendar-plus icon"></i
         ><span
           >{{
-            "reservationCreationDeadlineLabel"
+            "BookingFormComponent@@reservationCreationDeadlineLabel"
               | translate : (currentLanguageService.currentLanguage$ | async)
           }}
         </span>
@@ -195,7 +200,7 @@
       >
         <i class="ph ph-paper-plane-right icon"></i
         >{{
-          "askForReservationButtonLabel"
+          "BookingFormComponent@@askForReservationButtonLabel"
             | translate : (currentLanguageService.currentLanguage$ | async)
         }}
       </button>

@@ -4,7 +4,7 @@
       <i class="ph ph-clock icon"></i
       ><strong
         ><span class="info-label">{{
-          "timeLabel"
+          "InfoSectionComponent@@timeLabel"
             | translate : (currentLanguageService.currentLanguage$ | async)
         }}</span></strong
       >{{ startTime }} - {{ endTime }}
@@ -14,7 +14,7 @@
     <p class="icon-outer-container info-row">
       <i class="ph ph-map-pin icon"></i
       ><strong class="info-label">{{
-        "addressLabel"
+        "InfoSectionComponent@@addressLabel"
           | translate : (currentLanguageService.currentLanguage$ | async)
       }}</strong>
       {{ address }}
@@ -24,7 +24,7 @@
     <p class="icon-outer-container info-row">
       <i class="ph ph-phone icon"></i
       ><strong href="tel:+385919146693" class="info-label">{{
-        "phoneLabel"
+        "InfoSectionComponent@@phoneLabel"
           | translate : (currentLanguageService.currentLanguage$ | async)
       }}</strong>
       {{ companyPhone }}
@@ -34,7 +34,7 @@
     <p class="icon-outer-container info-row">
       <i class="ph ph-envelope icon"></i>
       <strong class="info-label">{{
-        "emailLabel"
+        "InfoSectionComponent@@emailLabel"
           | translate : (currentLanguageService.currentLanguage$ | async)
       }}</strong>
       <span href="mailto:cooking.class.plitvice@gmail.com">{{

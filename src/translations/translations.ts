@@ -1,6 +1,6 @@
 // This file contains translations for the Traditional Plitvice Lakes Cooking Class website.
 export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
-  description1: {
+  'HomeComponent@@description1': {
     hr: 'Dobrodošli u srce Like, gdje mirisi domaće kuhinje bude sjećanja, a okusi pričaju priče naših baka. Naš Traditional Plitvice Lakes Cooking Class nije samo tečaj kuhanja – to je doživljaj za dušu.',
     'en-US':
       'Welcome to the heart of Lika, where the aromas of home cooking awaken memories and the flavors tell the stories of our grandmothers. Our Traditional Plitvice Lakes Cooking Class is not just a cooking course – it’s a soulful experience.',
@@ -10,7 +10,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Bienvenido al corazón de Lika, donde los aromas de la cocina casera despiertan recuerdos y los sabores cuentan las historias de nuestras abuelas. Nuestro Traditional Plitvice Lakes Cooking Class no es solo un curso de cocina, es una experiencia para el alma.',
     cs: 'Vítejte v srdci Lika, kde vůně domácí kuchyně probouzejí vzpomínky a chutě vyprávějí příběhy našich babiček. Naše Traditional Plitvice Lakes Cooking Class není jen kurz vaření – je to zážitek pro duši.',
   },
-  description2: {
+  'HomeComponent@@description2': {
     hr: 'U društvu naše obitelji, u toplini ličkog doma, naučit ćete pripremati autentična plitvička i lička jela po starinskim receptima koji se prenose generacijama. Ali ne brinite – ovdje se ne broje samo grami i minute. Ovdje se broje osmijesi, mirisi svježeg bilja, zvuk pucanja vatre i topli razgovori uz rakijicu.',
     'en-US':
       'In the company of our family, in the warmth of a Lika home, you will learn to prepare authentic Plitvice and Lika dishes using traditional recipes passed down through generations. But don’t worry – here we don’t just count grams and minutes. Here we count smiles, the aromas of fresh herbs, the sound of crackling fire, and warm conversations over homemade brandy.',
@@ -20,7 +20,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'En compañía de nuestra familia, en la calidez de un hogar de Lika, aprenderás a preparar platos auténticos de Plitvice y Lika siguiendo recetas tradicionales transmitidas de generación en generación. Pero no te preocupes, aquí no solo contamos gramos y minutos. Aquí contamos sonrisas, los aromas de las hierbas frescas, el sonido del fuego crepitante y las cálidas conversaciones con rakija casera.',
     cs: 'Ve společnosti naší rodiny, v teple ličského domova, se naučíte připravovat autentická plitvická a ličská jídla podle tradičních receptů předávaných z generace na generaci. Ale nebojte se – zde nepočítáme jen gramy a minuty. Zde počítáme úsměvy, vůně čerstvých bylinek, zvuk praskajícího ohně a teplé rozhovory u domácí pálenky.',
   },
-  description3: {
+  'HomeComponent@@description3': {
     hr: 'Zajedno ćemo mijesiti, sjeckati, kuhati i – najvažnije – smijati se. U svako jelo unosimo dašak prošlih vremena i ljubavi prema kraju iz kojeg dolazimo. A dok kuhate s nama, postajete dio te priče.',
     'en-US':
       'Together we will knead, chop, cook, and – most importantly – laugh. In every dish, we infuse a touch of the past and a love for the region we come from. And as you cook with us, you become part of that story.',
@@ -30,7 +30,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Juntos amasaremos, picaremos, cocinaremos y – lo más importante – reiremos. En cada plato, infundimos un toque del pasado y un amor por la región de la que venimos. Y mientras cocinas con nosotros, te conviertes en parte de esa historia.',
     cs: 'Společně budeme hníst, krájet, vařit a – co je nejdůležitější – smát se. Do každého jídla vkládáme kousek minulosti a lásku k regionu, ze kterého pocházíme. A když s námi vaříte, stáváte se součástí tohoto příběhu.',
   },
-  expected: {
+  'HomeComponent@@expected': {
     hr: 'Što vas očekuje?',
     'en-US': 'What to expect?',
     de: 'Was Sie erwartet?',
@@ -39,7 +39,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Qué esperar?',
     cs: 'Co očekávat?',
   },
-  bullet1: {
+  'HomeComponent@@bullet1': {
     hr: 'Edukacija i priprema tradicionalnih jela uz stručne i srdačne domaćine',
     'en-US':
       'Education and preparation of traditional dishes with expert and warm hosts',
@@ -49,7 +49,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Educación y preparación de platos tradicionales con expertos y cálidos anfitriones',
     cs: 'Vzdělávání a příprava tradičních jídel s odbornými a srdečnými hostiteli',
   },
-  bullet2: {
+  'HomeComponent@@bullet2': {
     hr: 'Korištenje lokalnih, svježih sastojaka – iz vrta, s tržnice ili iz prirode',
     'en-US':
       'Use of local, fresh ingredients – from the garden, the market, or nature',
@@ -59,7 +59,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Uso de ingredientes locales y frescos – del jardín, del mercado o de la naturaleza',
     cs: 'Použití místních, čerstvých surovin – ze zahrady, trhu nebo přírody',
   },
-  bullet3: {
+  'HomeComponent@@bullet3': {
     hr: 'Nezaboravno druženje u rustikalnom ambijentu',
     'en-US': 'Unforgettable gathering in a rustic setting',
     de: 'Unvergessliches Beisammensein in rustikalem Ambiente',
@@ -68,7 +68,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Reunión inolvidable en un entorno rústico',
     cs: 'Nezapomenutelné setkání v rustikálním prostředí',
   },
-  bullet4: {
+  'HomeComponent@@bullet4': {
     hr: 'Kušanje vlastitih kulinarskih remek-djela uz domaće vino i rakiju',
     'en-US':
       'Tasting your own culinary masterpieces with homemade wine and brandy',
@@ -78,7 +78,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Degustación de sus propias obras maestras culinarias con vino y brandy caseros',
     cs: 'Degustace vlastních kulinářských mistrovských děl s domácím vínem a pálenkou',
   },
-  bullet5: {
+  'HomeComponent@@bullet5': {
     hr: 'Trenuci koje ćete ponijeti kući – ne u torbi, nego u srcu',
     'en-US': 'Moments to take home – not in a bag, but in your heart',
     de: 'Momente, die Sie mit nach Hause nehmen – nicht in einer Tasche, sondern in Ihrem Herzen',
@@ -87,7 +87,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Momentos para llevar a casa – no en una bolsa, sino en tu corazón',
     cs: 'Chvíle, které si odnesete domů – ne v tašce, ale ve svém srdci',
   },
-  endingWord: {
+  'HomeComponent@@endingWord': {
     hr: 'Ovo nije samo kuhanje – ovo je spajanje s kulturom, s ljudima i s prirodom Plitvičkih jezera. Ako tražite nešto istinski autentično, daleko od turističke vreve, dođite da zajedno zapalimo vatru, razvaljamo tijesto i zapečemo uspomene koje će trajati zauvijek.',
     'en-US':
       'This is not just cooking – it is connecting with the culture, with the people, and with the nature of Plitvice Lakes. If you are looking for something truly authentic, far from the tourist crowds, come let’s light the fire together, roll out the dough, and bake memories that will last forever.',
@@ -97,7 +97,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Esto no es solo cocinar: es conectar con la cultura, con la gente y con la naturaleza de los lagos de Plitvice. Si buscas algo verdaderamente auténtico, lejos de las multitudes de turistas, ven, encendamos el fuego juntos, estiremos la masa y horneemos recuerdos que durarán para siempre.',
     cs: 'To není jen vaření – je to spojení s kulturou, lidmi a přírodou Plitvických jezer. Pokud hledáte něco skutečně autentického, daleko od turistických davů, pojďte, zapalme společně oheň, vyválejte těsto a upečme vzpomínky, které vydrží navždy.',
   },
-  reserveWord: {
+  'HomeComponent@@reserveWord': {
     hr: 'Rezervirajte svoje mjesto za stolom – obitelj vas čeka!',
     'en-US': 'Reserve your table – your family is waiting!',
     de: 'Reservieren Sie Ihren Tisch – Ihre Familie wartet!',
@@ -106,55 +106,55 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Reserva tu mesa – ¡tu familia te está esperando!',
     cs: 'Rezervujte si stůl – vaše rodina na vás čeká!',
   },
-  reservationsSoon: {
-    hr: 'Rezerviranje putem stranice uskoro će biti omogućeno!',
-    'en-US': 'Reservations through the website will be available soon!',
-    de: 'Reservierungen über die Website werden bald verfügbar sein!',
-    it: 'Le prenotazioni tramite il sito web saranno disponibili a breve!',
-    fr: 'Les réservations via le site Web seront bientôt disponibles!',
-    es: '¡Las reservas a través del sitio web estarán disponibles pronto!',
-    cs: 'Rezervace prostřednictvím webových stránek budou brzy k dispozici!',
-  },
-  contactUs: {
-    hr: 'Do tada nas za rezervacije kontaktirajte putem telefona ili e-maila navedenih na stranici. Hvala na strpljenju!',
-    'en-US':
-      'Until then, please contact us for reservations by phone or email listed on the page. Thank you for your patience!',
-    de: 'Bis dahin kontaktieren Sie uns bitte für Reservierungen telefonisch oder per E-Mail, die auf der Seite angegeben sind. Vielen Dank für Ihre Geduld!',
-    it: 'Fino ad allora, vi preghiamo di contattarci per le prenotazioni telefonicamente o via email indicati nella pagina. Grazie per la vostra pazienza!',
-    fr: 'En attendant, veuillez nous contacter pour les réservations par téléphone ou par e-mail indiqués sur la page. Merci de votre patience!',
-    es: 'Hasta entonces, contáctenos para reservas por teléfono o correo electrónico que se indican en la página. ¡Gracias por su paciencia!',
-    cs: 'Do té doby nás prosím kontaktujte pro rezervace telefonicky nebo e-mailem uvedeným na stránce. Děkujeme za trpělivost!',
-  },
-  guestsGroup: {
-    hr: 'Događaju može prisustvovati od 2 do 12 osoba. Moguće je kombinirati više grupa.',
-    'en-US':
-      'The event can accommodate from 2 to 12 people. It is possible to combine multiple groups.',
-    de: 'Die Veranstaltung kann von 2 bis 12 Personen besucht werden. Es ist möglich, mehrere Gruppen zu kombinieren.',
-    it: "L'evento può ospitare da 2 a 12 persone. È possibile combinare più gruppi.",
-    fr: "L'événement peut accueillir de 2 à 12 personnes. Il est possible de combiner plusieurs groupes.",
-    es: 'El evento puede acomodar de 2 a 12 personas. Es posible combinar varios grupos.',
-    cs: 'Akce se může zúčastnit 2 až 12 osob. Je možné kombinovat více skupin.',
-  },
-  price: {
-    hr: 'Plaćanje se vrši nakon događaja – gotovinom, karticom ili virmanom. Cijena po osobi iznosi 80 EUR.',
-    'en-US':
-      'Payment is made after the event – in cash, by card, or by bank transfer. The price per person is 80 EUR.',
-    de: 'Die Zahlung erfolgt nach der Veranstaltung – bar, mit Karte oder per Überweisung. Der Preis pro Person beträgt 80 EUR.',
-    it: "Il pagamento avviene dopo l'evento – in contante, con carta o tramite bonifico bancario. Il prezzo per persona è di 80 EUR.",
-    fr: "Le paiement s'effectue après l'événement – en espèces, par carte ou par virement bancaire. Le prix par personne est de 80 EUR.",
-    es: 'El pago se realiza después del evento – en efectivo, con tarjeta o mediante transferencia bancaria. El precio por persona es de 80 EUR.',
-    cs: 'Platba probíhá po akci – hotově, kartou nebo bankovním převodem. Cena za osobu je 80 EUR.',
-  },
-  reservationAndCancellation: {
-    hr: 'Rezervaciju je moguće napraviti do 24 sata prije početka događaja.',
-    'en-US': 'Reservations can be made up to 24 hours before the event starts.',
-    de: 'Reservierungen sind bis zu 24 Stunden vor Beginn der Veranstaltung möglich.',
-    it: "Le prenotazioni possono essere effettuate fino a 24 ore prima dell'inizio dell'evento.",
-    fr: "Les réservations peuvent être effectuées jusqu'à 24 heures avant le début de l'événement.",
-    es: 'Las reservas se pueden hacer hasta 24 horas antes del inicio del evento.',
-    cs: 'Rezervace je možné provést až 24 hodin před začátkem akce.',
-  },
-  timeLabel: {
+  // reservationsSoon: {
+  //   hr: 'Rezerviranje putem stranice uskoro će biti omogućeno!',
+  //   'en-US': 'Reservations through the website will be available soon!',
+  //   de: 'Reservierungen über die Website werden bald verfügbar sein!',
+  //   it: 'Le prenotazioni tramite il sito web saranno disponibili a breve!',
+  //   fr: 'Les réservations via le site Web seront bientôt disponibles!',
+  //   es: '¡Las reservas a través del sitio web estarán disponibles pronto!',
+  //   cs: 'Rezervace prostřednictvím webových stránek budou brzy k dispozici!',
+  // },
+  // contactUs: {
+  //   hr: 'Do tada nas za rezervacije kontaktirajte putem telefona ili e-maila navedenih na stranici. Hvala na strpljenju!',
+  //   'en-US':
+  //     'Until then, please contact us for reservations by phone or email listed on the page. Thank you for your patience!',
+  //   de: 'Bis dahin kontaktieren Sie uns bitte für Reservierungen telefonisch oder per E-Mail, die auf der Seite angegeben sind. Vielen Dank für Ihre Geduld!',
+  //   it: 'Fino ad allora, vi preghiamo di contattarci per le prenotazioni telefonicamente o via email indicati nella pagina. Grazie per la vostra pazienza!',
+  //   fr: 'En attendant, veuillez nous contacter pour les réservations par téléphone ou par e-mail indiqués sur la page. Merci de votre patience!',
+  //   es: 'Hasta entonces, contáctenos para reservas por teléfono o correo electrónico que se indican en la página. ¡Gracias por su paciencia!',
+  //   cs: 'Do té doby nás prosím kontaktujte pro rezervace telefonicky nebo e-mailem uvedeným na stránce. Děkujeme za trpělivost!',
+  // },
+  // guestsGroup: {
+  //   hr: 'Događaju može prisustvovati od 2 do 12 osoba. Moguće je kombinirati više grupa.',
+  //   'en-US':
+  //     'The event can accommodate from 2 to 12 people. It is possible to combine multiple groups.',
+  //   de: 'Die Veranstaltung kann von 2 bis 12 Personen besucht werden. Es ist möglich, mehrere Gruppen zu kombinieren.',
+  //   it: "L'evento può ospitare da 2 a 12 persone. È possibile combinare più gruppi.",
+  //   fr: "L'événement peut accueillir de 2 à 12 personnes. Il est possible de combiner plusieurs groupes.",
+  //   es: 'El evento puede acomodar de 2 a 12 personas. Es posible combinar varios grupos.',
+  //   cs: 'Akce se může zúčastnit 2 až 12 osob. Je možné kombinovat více skupin.',
+  // },
+  // price: {
+  //   hr: 'Plaćanje se vrši nakon događaja – gotovinom, karticom ili virmanom. Cijena po osobi iznosi 80 EUR.',
+  //   'en-US':
+  //     'Payment is made after the event – in cash, by card, or by bank transfer. The price per person is 80 EUR.',
+  //   de: 'Die Zahlung erfolgt nach der Veranstaltung – bar, mit Karte oder per Überweisung. Der Preis pro Person beträgt 80 EUR.',
+  //   it: "Il pagamento avviene dopo l'evento – in contante, con carta o tramite bonifico bancario. Il prezzo per persona è di 80 EUR.",
+  //   fr: "Le paiement s'effectue après l'événement – en espèces, par carte ou par virement bancaire. Le prix par personne est de 80 EUR.",
+  //   es: 'El pago se realiza después del evento – en efectivo, con tarjeta o mediante transferencia bancaria. El precio por persona es de 80 EUR.',
+  //   cs: 'Platba probíhá po akci – hotově, kartou nebo bankovním převodem. Cena za osobu je 80 EUR.',
+  // },
+  // reservationAndCancellation: {
+  //   hr: 'Rezervaciju je moguće napraviti do 24 sata prije početka događaja.',
+  //   'en-US': 'Reservations can be made up to 24 hours before the event starts.',
+  //   de: 'Reservierungen sind bis zu 24 Stunden vor Beginn der Veranstaltung möglich.',
+  //   it: "Le prenotazioni possono essere effettuate fino a 24 ore prima dell'inizio dell'evento.",
+  //   fr: "Les réservations peuvent être effectuées jusqu'à 24 heures avant le début de l'événement.",
+  //   es: 'Las reservas se pueden hacer hasta 24 horas antes del inicio del evento.',
+  //   cs: 'Rezervace je možné provést až 24 hodin před začátkem akce.',
+  // },
+  'InfoSectionComponent@@timeLabel': {
     hr: 'Vrijeme održavanja:',
     'en-US': 'Event Time:',
     de: 'Veranstaltungszeit:',
@@ -163,7 +163,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Hora del evento:',
     cs: 'Čas konání:',
   },
-  addressLabel: {
+  'InfoSectionComponent@@addressLabel': {
     hr: 'Adresa:',
     'en-US': 'Address:',
     de: 'Adresse:',
@@ -172,7 +172,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Dirección:',
     cs: 'Adresa:',
   },
-  phoneLabel: {
+  'InfoSectionComponent@@phoneLabel': {
     hr: 'Telefon:',
     'en-US': 'Phone:',
     de: 'Telefon:',
@@ -181,7 +181,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Teléfono:',
     cs: 'Telefon:',
   },
-  emailLabel: {
+  'InfoSectionComponent@@emailLabel': {
     hr: 'E-mail:',
     'en-US': 'Email:',
     de: 'E-Mail:',
@@ -190,7 +190,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Email:',
     cs: 'Email:',
   },
-  askForReservation: {
+  'BookingFormComponent@@askForReservation': {
     hr: 'Zatraži rezervaciju',
     'en-US': 'Request Reservation',
     de: 'Reservierung anfragen',
@@ -199,7 +199,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Solicitar reserva',
     cs: 'Požádat o rezervaci',
   },
-  nameAndSurname: {
+  'BookingFormComponent@@nameAndSurname': {
     hr: 'Ime i prezime *',
     'en-US': 'Name and Surname *',
     de: 'Name und Nachname *',
@@ -208,7 +208,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Nombre y apellidos *',
     cs: 'Jméno a příjmení *',
   },
-  emailAddress: {
+  'BookingFormComponent@@emailAddress': {
     hr: 'E-mail adresa *',
     'en-US': 'Email Address *',
     de: 'E-Mail-Adresse *',
@@ -217,7 +217,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Dirección de correo electrónico *',
     cs: 'E-mailová adresa *',
   },
-  mobileNumber: {
+  'BookingFormComponent@@mobileNumber': {
     hr: 'Broj mobitela *',
     'en-US': 'Mobile Number *',
     de: 'Handynummer *',
@@ -226,7 +226,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Número de móvil *',
     cs: 'Číslo mobilního telefonu *',
   },
-  date: {
+  'BookingFormComponent@@date': {
     hr: 'Datum *',
     'en-US': 'Date *',
     de: 'Datum *',
@@ -235,7 +235,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Fecha *',
     cs: 'Datum *',
   },
-  numberOfPersons: {
+  'BookingFormComponent@@numberOfPersons': {
     hr: 'Broj osoba *',
     'en-US': 'Number of Persons *',
     de: 'Anzahl der Personen *',
@@ -244,7 +244,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Número de personas *',
     cs: 'Počet osob *',
   },
-  message: {
+  'BookingFormComponent@@message': {
     hr: 'Poruka',
     'en-US': 'Message',
     de: 'Nachricht',
@@ -253,7 +253,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Mensaje',
     cs: 'Zpráva',
   },
-  thisReservationIsNotAutomaticallyConfirmed: {
+  'BookingFormComponent@@thisReservationIsNotAutomaticallyConfirmed': {
     hr: 'Ova rezervacija NIJE automatski potvrđena.',
     'en-US': 'This reservation is NOT automatically confirmed.',
     de: 'Diese Reservierung ist NICHT automatisch bestätigt.',
@@ -262,7 +262,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Esta reserva NO está confirmada automáticamente.',
     cs: 'Tato rezervace NENÍ automaticky potvrzena.',
   },
-  fastBookingLabel: {
+  'BookingFormComponent@@fastBookingLabel': {
     hr: 'Termini se brzo popunjavaju i dostupnost može varirati.',
     'en-US': 'Slots fill up quickly and availability may vary.',
     de: 'Die Termine sind schnell ausgebucht und die Verfügbarkeit kann variieren.',
@@ -271,7 +271,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Los horarios se llenan rápidamente y la disponibilidad puede variar.',
     cs: 'Termíny se rychle zaplňují a dostupnost se může lišit.',
   },
-  numberOfPersonsPerClassLabel: {
+  'BookingFormComponent@@numberOfPersonsPerClassLabel': {
     hr: 'Događaju može prisustvovati od 2 do 12 osoba. Moguće je kombinirati više grupa.',
     'en-US':
       'The event can accommodate from 2 to 12 people. It is possible to combine multiple groups.',
@@ -281,7 +281,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'El evento puede acomodar de 2 a 12 personas. Es posible combinar varios grupos.',
     cs: 'Akce se může zúčastnit 2 až 12 osob. Je možné kombinovat více skupin.',
   },
-  paymentMethodsLabel: {
+  'BookingFormComponent@@paymentMethodsLabel': {
     hr: 'Plaćanje se vrši nakon događaja – gotovinom, karticom ili virmanom. Cijena po osobi iznosi',
     'en-US':
       'Payment is made after the event – in cash, by card, or by bank transfer. The price per person is',
@@ -291,7 +291,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'El pago se realiza después del evento – en efectivo, con tarjeta o por transferencia bancaria. El precio por persona es',
     cs: 'Platba se provádí po akci – hotově, kartou nebo bankovním převodem. Cena za osobu je',
   },
-  askForReservationButtonLabel: {
+  'BookingFormComponent@@askForReservationButtonLabel': {
     hr: 'Zatraži rezervaciju',
     'en-US': 'Request Reservation',
     de: 'Reservierung anfordern',
@@ -300,7 +300,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Solicitar reserva',
     cs: 'Požádat o rezervaci',
   },
-  reviewsSoon: {
+  'ReviewListComponent@@reviewsSoon': {
     hr: 'Recenzije uskoro stižu!',
     'en-US': 'Reviews coming soon!',
     de: 'Bewertungen kommen bald!',
@@ -309,7 +309,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: '¡Reseñas próximamente!',
     cs: 'Recenze brzy!',
   },
-  reviewsPatienceLabel: {
+  'ReviewListComponent@@reviewsPatienceLabel': {
     hr: 'Radujemo se što ćemo s vama uskoro podijeliti prve utiske. Hvala na razumijevanju!',
     'en-US':
       'We look forward to sharing the first impressions with you soon. Thank you for your understanding!',
@@ -319,7 +319,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Esperamos poder compartir pronto las primeras impresiones con usted. ¡Gracias por su comprensión!',
     cs: 'Těšíme se, že s vámi brzy sdílíme první dojmy. Děkujeme za pochopení!',
   },
-  messagePlaceholder: {
+  'BookingFormComponent@@messagePlaceholder': {
     hr: 'Ovdje možete navesti dodatne informacije (npr. jezik, posebne zahtjeve...)',
     'en-US':
       'You can provide additional information here (e.g., language, special requests...)',
@@ -329,7 +329,7 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     es: 'Puede proporcionar información adicional aquí (por ejemplo, idioma, solicitudes especiales...)',
     cs: 'Zde můžete uvést další informace (např. jazyk, zvláštní požadavky...)',
   },
-  reservationCreationDeadlineLabel: {
+  'BookingFormComponent@@reservationCreationDeadlineLabel': {
     hr: 'Rezervaciju je moguće napraviti do 24 sata prije početka događaja.',
     'en-US': 'Reservations can be made up to 24 hours before the event starts.',
     de: 'Reservierungen sind bis zu 24 Stunden vor Beginn der Veranstaltung möglich.',
@@ -337,5 +337,41 @@ export const TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     fr: "Les réservations peuvent être effectuées jusqu'à 24 heures avant le début de l'événement.",
     es: 'Las reservas se pueden hacer hasta 24 horas antes del inicio del evento.',
     cs: 'Rezervace je možné provést až 24 hodin před začátkem akce.',
+  },
+  'LeaveReviewComponent@@rateUs': {
+    hr: 'Molimo, ocijenite našu uslugu.',
+    'en-US': 'Please rate our service.',
+    de: 'Bitte bewerten Sie unseren Service.',
+    it: 'Si prega di valutare il nostro servizio.',
+    fr: 'Veuillez évaluer notre service.',
+    es: 'Por favor, califique nuestro servicio.',
+    cs: 'Prosím, ohodnoťte naše služby.',
+  },
+  'BookingFormComponent@@reviewPlaceholder': {
+    hr: 'Unesite svoju recenziju ovdje...',
+    'en-US': 'Enter your review here...',
+    de: 'Geben Sie hier Ihre Bewertung ein...',
+    it: 'Inserisci qui la tua recensione...',
+    fr: 'Entrez votre avis ici...',
+    es: 'Ingrese su reseña aquí...',
+    cs: 'Zadejte svou recenzi zde...',
+  },
+  'BookingFormComponent@@namePlaceholder': {
+    hr: 'Unesite svoje ime ovdje...',
+    'en-US': 'Enter your name here...',
+    de: 'Geben Sie hier Ihren Namen ein...',
+    it: 'Inserisci qui il tuo nome...',
+    fr: 'Entrez votre nom ici...',
+    es: 'Ingrese su nombre aquí...',
+    cs: 'Zadejte své jméno zde...',
+  },
+  'BookingFormComponent@@submitButton': {
+    hr: 'Pošaljite recenziju',
+    'en-US': 'Submit Review',
+    de: 'Bewertung absenden',
+    it: 'Invia recensione',
+    fr: 'Soumettre un avis',
+    es: 'Enviar reseña',
+    cs: 'Odeslat recenzi',
   },
 };
