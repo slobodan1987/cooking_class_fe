@@ -6,6 +6,10 @@
  */
 export interface IReservation {
   /**
+   * unique identifier for the reservation
+   */
+  id: string;
+  /**
    * name of the person making the reservation
    */
   name: string;
@@ -47,50 +51,50 @@ export interface ICompanyData {
   /**
    * company name
    */
-  name: string;
+  name?: string;
   /**
    * address of the company
    */
-  address: string;
+  address?: string;
   /**
    * phone number of the company
    */
-  phone: string;
+  phone?: string;
   /**
    * email of the company
    */
-  email: string;
+  email?: string;
   /**
    * start time of the booking
    */
-  startTime: string;
+  startTime?: string;
   /**
    * end time of the booking
    */
-  endTime: string;
+  endTime?: string;
   /**
    * minimum number of persons per class
    */
-  minPersonsPerClass: number;
+  minPersonsPerClass?: number;
   /**
    * maximum number of persons per class
    */
-  maxPersonsPerClass: number;
+  maxPersonsPerClass?: number;
   /**
    * price per person for the booking (in euros)
    * - this is the price that will be charged for each person in the booking
    */
-  pricePerPerson: number;
+  pricePerPerson?: number;
 
   /**
    * preparation time for the event (in hours)
    */
-  preparationTimeInHours: number;
+  preparationTimeInHours?: number;
 
   /**
    * google coordinates for the address
    */
-  googleCoordinates: string;
+  googleCoordinates?: string;
 }
 
 /**
@@ -99,6 +103,10 @@ export interface ICompanyData {
  * This interface is used to manage reviews in the application.
  */
 export interface IReview {
+  /**
+   * unique identifier for the review
+   */
+  id: string;
   /**
    * name of the reviewer
    */
@@ -122,4 +130,13 @@ export interface IReview {
    * - 'REJECTED': review has been rejected
    */
   status: 'WAITING_FOR_PUBLICATION' | 'PUBLISHED' | 'REJECTED';
+}
+
+/**
+ * HTTP response interface for API calls
+ */
+export interface IHttpResult<T> {
+  success: boolean;
+  data?: T;
+  error?: string;
 }

@@ -30,6 +30,7 @@ export const companyDataMock: ICompanyData = {
  */
 export const reservationsMock: IReservation[] = [
   {
+    id: '1',
     name: 'John Doe',
     email: 'john.doe@example.com',
     phone: '+385 91 1234567',
@@ -39,6 +40,7 @@ export const reservationsMock: IReservation[] = [
     message: 'Looking forward to the class!',
   },
   {
+    id: '2',
     name: 'Jane Smith',
     email: 'jane.smith@example.com',
     phone: '+385 91 7654321',
@@ -48,6 +50,7 @@ export const reservationsMock: IReservation[] = [
     message: "Can't wait for the class!",
   },
   {
+    id: '3',
     name: 'Alice Johnson',
     email: 'alice.johnson@example.com',
     phone: '+385 91 9876543',
@@ -57,6 +60,7 @@ export const reservationsMock: IReservation[] = [
     message: "Can't wait for the class!",
   },
   {
+    id: '4',
     name: 'Mary Peterson',
     email: 'mary.peterson@example.com',
     phone: '+385 91 6543210',
@@ -98,6 +102,7 @@ export const completelyBookedDaysMock: string[] = ['29.08.2025.'];
  */
 export const reviewsMockExtensive: IReview[] = [
   {
+    id: '1',
     author: 'John Doe',
     email: 'john.doe@example.com',
     rating: 5,
@@ -105,6 +110,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '2',
     author: 'Jane Smith',
     email: 'jane.smith@example.com',
     rating: 4,
@@ -113,6 +119,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '3',
     author: 'Alice Johnson',
     email: 'alice.johnson@example.com',
     rating: 3,
@@ -120,6 +127,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '4',
     author: 'Mary Peterson',
     email: 'mary.peterson@example.com',
     rating: 5,
@@ -127,6 +135,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '5',
     author: 'Bob Brown',
     email: 'bob.brown@example.com',
     rating: 4,
@@ -134,6 +143,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'WAITING_FOR_PUBLICATION',
   },
   {
+    id: '6',
     author: 'Charlie White',
     email: 'charlie.white@example.com',
     rating: 5,
@@ -141,6 +151,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '7',
     author: 'Diana Green',
     email: 'diana.green@example.com',
     rating: 5,
@@ -148,6 +159,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '8',
     author: 'Ethan Blue',
     email: 'ethan.blue@example.com',
     rating: 5,
@@ -155,6 +167,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '9',
     author: 'Fiona Yellow',
     email: 'fiona.yellow@example.com',
     rating: 5,
@@ -162,6 +175,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '10',
     author: 'George Black',
     email: 'george.black@example.com',
     rating: 5,
@@ -169,6 +183,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'REJECTED',
   },
   {
+    id: '11',
     author: 'Hannah Pink',
     email: 'hannah.pink@example.com',
     rating: 5,
@@ -176,6 +191,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '12',
     author: 'Ian Orange',
     email: 'ian.orange@example.com',
     rating: 5,
@@ -183,6 +199,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '13',
     author: 'Julia Purple',
     email: 'julia.purple@example.com',
     rating: 5,
@@ -190,6 +207,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '14',
     author: 'Kevin Gray',
     email: 'kevin.gray@example.com',
     rating: 5,
@@ -197,6 +215,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '15',
     author: 'Laura Cyan',
     email: 'laura.cyan@example.com',
     rating: 5,
@@ -204,6 +223,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'WAITING_FOR_PUBLICATION',
   },
   {
+    id: '16',
     author: 'Michael Red',
     email: 'michael.red@example.com',
     rating: 5,
@@ -211,6 +231,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '17',
     author: 'Nina Silver',
     email: 'nina.silver@example.com',
     rating: 5,
@@ -218,6 +239,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '18',
     author: 'Oliver Stone',
     email: 'oliver.stone@example.com',
     rating: 4,
@@ -225,6 +247,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '19',
     author: 'Petra Gold',
     email: 'petra.gold@example.com',
     rating: 5,
@@ -232,6 +255,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '20',
     author: 'Quinn Brown',
     email: 'quinn.brown@example.com',
     rating: 3,
@@ -239,6 +263,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '21',
     author: 'Rachel White',
     email: 'rachel.white@example.com',
     rating: 5,
@@ -246,6 +271,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '22',
     author: 'Steve Black',
     email: 'steve.black@example.com',
     rating: 4,
@@ -253,6 +279,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '23',
     author: 'Tina Green',
     email: 'tina.green@example.com',
     rating: 5,
@@ -260,6 +287,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '24',
     author: 'Uma Blue',
     email: 'uma.blue@example.com',
     rating: 4,
@@ -267,6 +295,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '25',
     author: 'Victor Red',
     email: 'victor.red@example.com',
     rating: 5,
@@ -274,6 +303,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'WAITING_FOR_PUBLICATION',
   },
   {
+    id: '26',
     author: 'Wendy Yellow',
     email: 'wendy.yellow@example.com',
     rating: 4,
@@ -281,6 +311,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '27',
     author: 'Xavier Pink',
     email: 'xavier.pink@example.com',
     rating: 5,
@@ -288,6 +319,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '28',
     author: 'Yara Orange',
     email: 'yara.orange@example.com',
     rating: 3,
@@ -295,6 +327,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '29',
     author: 'Zoe Purple',
     email: 'zoe.purple@example.com',
     rating: 5,
@@ -302,6 +335,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '30',
     author: 'Adam Gray',
     email: 'adam.gray@example.com',
     rating: 4,
@@ -309,6 +343,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '31',
     author: 'Bella Cyan',
     email: 'bella.cyan@example.com',
     rating: 5,
@@ -316,6 +351,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '32',
     author: 'Carlos Silver',
     email: 'carlos.silver@example.com',
     rating: 4,
@@ -323,6 +359,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'REJECTED',
   },
   {
+    id: '33',
     author: 'Dana Gold',
     email: 'dana.gold@example.com',
     rating: 5,
@@ -330,6 +367,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '34',
     author: 'Eric Brown',
     email: 'eric.brown@example.com',
     rating: 3,
@@ -338,6 +376,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'WAITING_FOR_PUBLICATION',
   },
   {
+    id: '35',
     author: 'Faye White',
     email: 'faye.white@example.com',
     rating: 5,
@@ -345,6 +384,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '36',
     author: 'Gary Black',
     email: 'gary.black@example.com',
     rating: 4,
@@ -352,6 +392,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '37',
     author: 'Hailey Green',
     email: 'hailey.green@example.com',
     rating: 5,
@@ -359,6 +400,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '38',
     author: 'Igor Blue',
     email: 'igor.blue@example.com',
     rating: 4,
@@ -366,6 +408,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '39',
     author: 'Jenny Red',
     email: 'jenny.red@example.com',
     rating: 5,
@@ -373,6 +416,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '40',
     author: 'Kyle Yellow',
     email: 'kyle.yellow@example.com',
     rating: 3,
@@ -380,6 +424,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'WAITING_FOR_PUBLICATION',
   },
   {
+    id: '41',
     author: 'Luna Pink',
     email: 'luna.pink@example.com',
     rating: 5,
@@ -387,6 +432,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '42',
     author: 'Max Orange',
     email: 'max.orange@example.com',
     rating: 4,
@@ -394,6 +440,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '43',
     author: 'Nora Purple',
     email: 'nora.purple@example.com',
     rating: 5,
@@ -401,6 +448,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '44',
     author: 'Owen Gray',
     email: 'owen.gray@example.com',
     rating: 4,
@@ -408,6 +456,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '45',
     author: 'Paige Cyan',
     email: 'paige.cyan@example.com',
     rating: 5,
@@ -415,6 +464,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '46',
     author: 'Ryan Silver',
     email: 'ryan.silver@example.com',
     rating: 3,
@@ -422,6 +472,7 @@ export const reviewsMockExtensive: IReview[] = [
     status: 'WAITING_FOR_PUBLICATION',
   },
   {
+    id: '47',
     author: 'Sara Gold',
     email: 'sara.gold@example.com',
     rating: 5,
@@ -441,6 +492,7 @@ export const reviewsMockExtensive: IReview[] = [
  */
 export const reviewsMockShort: IReview[] = [
   {
+    id: '1',
     author: 'Alice Smith',
     email: 'alice.smith@example.com',
     rating: 5,
@@ -448,6 +500,7 @@ export const reviewsMockShort: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '2',
     author: 'Bob Johnson',
     email: 'bob.johnson@example.com',
     rating: 4,
@@ -455,6 +508,7 @@ export const reviewsMockShort: IReview[] = [
     status: 'PUBLISHED',
   },
   {
+    id: '3',
     author: 'Charlie Brown',
     email: 'charlie.brown@example.com',
     rating: 3,
