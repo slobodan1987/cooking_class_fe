@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "nx serve",
-    "build": "nx build && ./copy-static-to-dist.sh",
+    "build": "nx build",
     "test": "nx test"
   },
   "private": true,
